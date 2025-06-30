@@ -1,0 +1,30 @@
+.info-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 500px;
+    background-color: aqua;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+}
+
+.middle-bar {
+    padding: 0.5rem;
+    display: block;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.service {
+    margin-bottom: 0.5rem;
+
+}
+
+.price {
+    border-left: 1px solid black;
+    padding: 0rem 0.5rem;
+}
+
+.description {
+    font-size: 0.5rem;
+}
