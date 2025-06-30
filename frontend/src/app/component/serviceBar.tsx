@@ -1,14 +1,14 @@
-import '../styles/infobar.css';
+import '../styles/servicebar.css';
 
 const services = [
   {
-    name: "Information Bar",
-    description: "This is an information bar component.",
+    name: "Käsipesu",
+    description: "Isam pesee hyvin",
     price: "0.00 €",
   },
   {
-    name: "Notification Bar",
-    description: "This is a notification bar component.",
+    name: "Ulkopesu",
+    description: "IISSSAAAAMM pesee hyvin",
     price: "0.00 €",
   }
 ];

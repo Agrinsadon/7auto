@@ -1,0 +1,28 @@
+.amount {
+    font-size: 14px;
+    padding-right: 0.5rem;
+    border-right: 1px solid rgb(147, 147, 147);
+}
+
+.plus-icon {
+    padding-left: 0.5rem;
+    min-width: 21px;
+    max-width: 21px;
+}
+
+
+.img {
+    border-radius: 2px;
+    margin-right: 1rem;
+}
+
+
+.seperation-bar {
+    display: flex;
+    align-items: center;
+}
+
+.seperation-bar-second {
+    display: flex;
+    align-items: center;
+}

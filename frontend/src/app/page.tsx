@@ -1,10 +1,12 @@
 import React from 'react';
-import InfoBar from './component/serviceBar';
+import Servicebar from './component/serviceBar';
+import Categorybar from './component/categoryBar';
 
 export default function Home() {
   return (
     <div>
-      <InfoBar />
+      <Servicebar />
+      <Categorybar />
     </div>
   );
 }
