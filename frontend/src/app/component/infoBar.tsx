@@ -22,7 +22,7 @@ const infoBar = () => {
     return (
         <div className="info-bar">
             <div className="middle-bar">
-            <p className="service">Moikka</p>
+            <p className="service">Käsipesu</p>
             <p className="description"> This is an information bar component that provides important updates and notifications.</p>
             </div>
             <p className="price">22 €</p>       
