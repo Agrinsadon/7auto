@@ -1,5 +1,5 @@
 import React from 'react';
-import InfoBar from './component/infoBar';
+import InfoBar from './component/serviceBar';
 
 export default function Home() {
   return (

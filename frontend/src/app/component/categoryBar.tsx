@@ -1,0 +1,1 @@
+// here will come the category bar component

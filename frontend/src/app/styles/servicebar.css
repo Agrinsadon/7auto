@@ -2,6 +2,7 @@
     cursor: pointer;
     display: flex;
     max-width: 350px;
+    justify-content: space-between;
     align-items: center;
     padding: 10px 10px 10px 15px;
     border: 2px solid #E5E7EE;
@@ -25,10 +26,11 @@
 .service {
     font-size: 16px;
     font-weight: 600;
+    padding-bottom: 0.3rem;
 }
 
 .price {
-    border-left: 1px solid black;
+    border-left: 1px solid rgb(147, 147, 147);
     padding-left: 0.5rem;
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
@@ -37,5 +39,4 @@
 
 .description {
     font-size: 10px;
-    padding-top: 0.3rem;
 }
