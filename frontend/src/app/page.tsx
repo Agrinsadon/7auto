@@ -1,12 +1,10 @@
 import React from 'react';
-import Servicebar from './component/serviceBar';
-import Categorybar from './component/categoryBar';
+import BookButton from './component/buttons/bookbutton';
 
 export default function Home() {
   return (
     <div>
-      <Servicebar />
-      <Categorybar />
+      <BookButton />
     </div>
   );
 }

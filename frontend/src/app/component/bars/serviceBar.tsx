@@ -1,4 +1,4 @@
-import '../styles/servicebar.css';
+import './servicebar.css';
 
 const services = [
   {

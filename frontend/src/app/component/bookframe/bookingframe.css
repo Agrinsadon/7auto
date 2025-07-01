@@ -1,0 +1,45 @@
+@keyframes fadeInBackground {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scaleInFrame {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  .booking-frame-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeInBackground 0.3s ease-out forwards;
+  }
+  
+  .booking-frame {
+    position: fixed;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    width: 750px;
+    height: 600px;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: #000;
+    border-radius: 20px;
+    animation: scaleInFrame 0.3s ease-out forwards;
+  }
+  

@@ -1,18 +1,18 @@
-import { FaCalendarPlus, FaPlusCircle, FaPlusSquare } from 'react-icons/fa';
-import '../styles/categorybar.css';
-import '../styles/servicebar.css';
+import { FaPlusCircle, FaPlusSquare } from 'react-icons/fa';
+import './categorybar.css';
+import './servicebar.css';
 import Image from 'next/image';
 
 const category = [
     {
         name: "Sisäpesu",
         amount: "5 palvelua",
-        img: "/testi.png",
+        img: "/isam.png",
     },
     {
         name: "Ulkopesu",
         amount: "5 palvelua",
-        img: "/testi.png",
+        img: "/isam.png",
     },
 ];
 
