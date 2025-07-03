@@ -1,3 +1,4 @@
+import BookButton from '../buttons/bookbutton';
 import RemoveButton from '../buttons/removebutton';
 import './bookingframe.css';
 
@@ -9,7 +10,14 @@ const BookingFrame = ({ onClose }: BookingFrameProps) => {
   return (
     <div className="booking-frame-container">
       <div className="booking-frame">
-        <RemoveButton onClick={onClose} />
+        <div className="booking-frame-header">
+        <RemoveButton onClick={onClose} onText='Valitse Varauspalvelu' />
+        </div>
+        <div className="booking-frame-content">
+            <BookButton onClick={() => alert('Varaus tehty!')} onText='Varaa Huolto' />
+            <BookButton onClick={() => alert('Varaus tehty!')} onText='Varaa Pesu' />
+        </div>
+
       </div>
     </div>
   );
