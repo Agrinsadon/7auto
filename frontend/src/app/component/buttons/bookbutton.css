@@ -1,0 +1,16 @@
+.book-button-container {
+    margin: 20rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-button {
+    width: 200px;
+    height: 50px;
+    background-color: #fff;
+    border-color: black;
+    border-radius: 5px;
+    font-size: 16px;  
+    cursor: pointer;
+}
