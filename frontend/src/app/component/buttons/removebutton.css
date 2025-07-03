@@ -1,0 +1,14 @@
+.remove-button-container {
+    display: flex;
+    padding: 20;
+}
+
+.remove-button {
+    position: fixed;
+    top: 20;
+    right: 20;
+    border: none;
+    font-size: 18px;
+    background-color: #fff;
+    cursor: pointer;
+}

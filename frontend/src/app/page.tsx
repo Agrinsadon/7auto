@@ -4,16 +4,20 @@ import BookButton from "./component/buttons/bookbutton";
 import BookingFrame from "./component/bookframe/bookingframe";
 
 export default function Home() {
-    const [showFrame, setShowFrame] = useState(false);
+  const [showFrame, setShowFrame] = useState(false);
 
-    const handleClick = () => {
-        setShowFrame(true);
-    };
+  const handleClick = () => {
+    setShowFrame(true);
+  };
 
-    return (
-        <div>
-            <BookButton onClick={handleClick} onText="Varaa aika" />
-            {showFrame && <BookingFrame />}
-        </div>
-    );
+  const handleClose = () => {
+    setShowFrame(false);
+  };
+
+  return (
+    <div>
+      <BookButton onClick={handleClick} onText="Varaa aika" />
+      {showFrame && <BookingFrame onClose={handleClose} />}
+    </div>
+  );
 }

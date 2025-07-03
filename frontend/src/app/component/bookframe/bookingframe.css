@@ -38,7 +38,7 @@
     height: 600px;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    background-color: #000;
+    background-color: #ffffff;
     border-radius: 20px;
     animation: scaleInFrame 0.3s ease-out forwards;
   }
