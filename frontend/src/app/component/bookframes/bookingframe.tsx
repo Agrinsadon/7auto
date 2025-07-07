@@ -14,6 +14,19 @@ const BookingFrame = ({ onText, children }: BookingFrameProps) => {
           <p>{onText}</p>
         </div>
         {children}
+        <div className="booking-frame-footer">
+          <div className="footer-left">
+            <button className="footer-button">← takaisin</button>
+            <button className="footer-button">seuraava →</button>
+          </div>
+          <div className="footer-divider" />
+          <div className="footer-right">
+            <p>
+              Tarvitsetko apua? Soita numeroon <strong>040 828 2655</strong> tai lähetä sähköpostia osoitteeseen{' '}
+              <strong>info@carwashderby.fi</strong>.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

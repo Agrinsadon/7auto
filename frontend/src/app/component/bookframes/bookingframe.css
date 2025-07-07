@@ -50,4 +50,44 @@
     border-bottom: 1px solid #e5e7ee;
   }
 
+
+  .booking-frame-footer {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #e5e7ee;
+    padding: 15px 20px;
+    gap: 20px;
+  }
+  
+  .footer-left {
+    display: flex;
+    gap: 50px;
+  }
+  
+  .footer-button {
+    color: black;
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+
+  .footer-divider {
+    height: 40px;
+    width: 1px;
+    background-color: #e5e7ee;
+  }
+  
+  .footer-right {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+  }
+  
+
   
