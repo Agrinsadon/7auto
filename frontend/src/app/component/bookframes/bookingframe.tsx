@@ -15,9 +15,7 @@ const BookingFrame = ({ onClose, onText, children }: BookingFrameProps) => {
           <p>{onText}</p>
           <RemoveButton onClick={onClose} />
         </div>
-        <div className="booking-frame-content">
-          {children}
-        </div>
+        {children}
       </div>
     </div>
   );

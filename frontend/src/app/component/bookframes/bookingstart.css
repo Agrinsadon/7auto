@@ -1,0 +1,40 @@
+.booking-frame-content {
+    display: flex;
+    height: calc(100% - 59px);
+  }
+  
+  .booking-side {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .booking-bg {
+    z-index: 1;
+    object-fit: cover;
+  }
+  
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8); /* dark semi-transparent overlay */
+    z-index: 2;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 1); /* optional for more drama */
+  }
+  
+  .booking-side > *:not(.booking-bg):not(.overlay) {
+    position: relative;
+    z-index: 3;
+  }
+
+  .booking-side:first-child {
+    border-bottom-left-radius: 10px;
+  }
+  
+  .booking-side:last-child {
+    border-bottom-right-radius: 10px;
+  }
+  

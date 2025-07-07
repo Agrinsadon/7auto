@@ -50,12 +50,4 @@
     border-bottom: 1px solid #e5e7ee;
   }
 
-  .booking-frame-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100% - 60px); /* Adjust height to account for header */
-  }
-
-
   

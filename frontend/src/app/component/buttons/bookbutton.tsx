@@ -10,10 +10,10 @@ interface BookButtonProps {
 
 export default function BookButton({ onClick, onText }: BookButtonProps) {
   return (
-    <div className="book-button-container">
+    <>
       <button className="book-button" onClick={onClick}>
         <span className="button-text">{onText}</span>
       </button>
-    </div>
+    </>
   );
 }
