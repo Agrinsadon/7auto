@@ -1,23 +1,23 @@
-import BookButton from '../buttons/bookbutton';
 import RemoveButton from '../buttons/removebutton';
 import './bookingframe.css';
 
 interface BookingFrameProps {
   onClose: () => void;
+  onText?: string;
+  children?: React.ReactNode;
 }
 
-const BookingFrame = ({ onClose }: BookingFrameProps) => {
+const BookingFrame = ({ onClose, onText, children }: BookingFrameProps) => {
   return (
     <div className="booking-frame-container">
       <div className="booking-frame">
         <div className="booking-frame-header">
-        <RemoveButton onClick={onClose} onText='Valitse Varauspalvelu' />
+          <p>{onText}</p>
+          <RemoveButton onClick={onClose} />
         </div>
         <div className="booking-frame-content">
-            <BookButton onClick={() => alert('Varaus tehty!')} onText='Varaa Huolto' />
-            <BookButton onClick={() => alert('Varaus tehty!')} onText='Varaa Pesu' />
+          {children}
         </div>
-
       </div>
     </div>
   );
