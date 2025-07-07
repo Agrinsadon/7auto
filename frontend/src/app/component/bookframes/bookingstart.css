@@ -1,4 +1,4 @@
-.booking-frame-content {
+.booking-start-content {
     display: flex;
     height: calc(100% - 59px);
   }
@@ -7,9 +7,6 @@
     position: relative;
     flex: 1;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   
   .booking-bg {
@@ -20,21 +17,33 @@
   .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.8); /* dark semi-transparent overlay */
+    background: rgba(0, 0, 0, 0.8);
     z-index: 2;
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 1); /* optional for more drama */
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 1);
   }
   
   .booking-side > *:not(.booking-bg):not(.overlay) {
     position: relative;
     z-index: 3;
   }
-
+  
   .booking-side:first-child {
     border-bottom-left-radius: 10px;
   }
   
   .booking-side:last-child {
     border-bottom-right-radius: 10px;
+  }
+  
+  /* ✅ Center buttons inside each booking-side */
+  .booking-button-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   

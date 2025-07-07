@@ -1,13 +1,21 @@
 'use client';
 import BookingFrame from './bookingframe';
+import BookingWash from './bookingwash';
 import BookButton from '../buttons/bookbutton';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import './bookingstart.css';
 
-const BookingHuoltoPesu = ({ onClose }: { onClose: () => void }) => {
+const BookingHuoltoPesu = () => {
+  const [showBooking, setShowBooking] = useState(false);
+
+  const handleBookingClick = () => {
+    setShowBooking(true);
+  };
+
   return (
-    <BookingFrame onClose={onClose} onText="Valitse Varauspalvelu">
-      <div className="booking-frame-content">
+    <BookingFrame onText="Valitse Varauspalvelu">
+      <div className="booking-start-content">
         <div className="booking-side">
           <Image
             src="/carfix.png"
@@ -18,10 +26,14 @@ const BookingHuoltoPesu = ({ onClose }: { onClose: () => void }) => {
             style={{ borderBottomLeftRadius: '10px' }}
           />
           <div className="overlay" />
-          <BookButton 
-          onClick={() => alert('Varaus tehty!')} 
-          onText="Varaa Huolto" />
+          <div className="booking-button-wrapper">
+            <BookButton
+              onClick={() => alert('Varaus tehty!')}
+              onText="Varaa Huolto"
+            />
+          </div>
         </div>
+
         <div className="booking-side">
           <Image
             src="/carwash.png"
@@ -31,7 +43,10 @@ const BookingHuoltoPesu = ({ onClose }: { onClose: () => void }) => {
             priority
           />
           <div className="overlay" />
-          <BookButton onClick={() => alert('Varaus tehty!')} onText="Varaa Pesu" />
+          <div className="booking-button-wrapper">
+            <BookButton onClick={handleBookingClick} onText="Varaa Pesu" />
+          </div>
+          {showBooking && <BookingWash />}
         </div>
       </div>
     </BookingFrame>
