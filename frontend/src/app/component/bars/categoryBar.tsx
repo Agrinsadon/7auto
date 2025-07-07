@@ -14,6 +14,21 @@ const category = [
         amount: "5 palvelua",
         img: "/isam.png",
     },
+    {
+        name: "Sisäpesu",
+        amount: "5 palvelua",
+        img: "/isam.png",
+    },
+    {
+        name: "Ulkopesu",
+        amount: "5 palvelua",
+        img: "/isam.png",
+    },
+    {
+        name: "Sisäpesu",
+        amount: "5 palvelua",
+        img: "/isam.png",
+    },
 ];
 
 const Categorybar = () => {

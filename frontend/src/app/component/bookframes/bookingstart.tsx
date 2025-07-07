@@ -23,7 +23,6 @@ const BookingHuoltoPesu = () => {
             fill
             className="booking-bg"
             priority
-            style={{ borderBottomLeftRadius: '10px' }}
           />
           <div className="overlay" />
           <div className="booking-button-wrapper">

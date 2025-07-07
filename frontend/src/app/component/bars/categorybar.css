@@ -10,12 +10,10 @@
     max-width: 21px;
 }
 
-
 .img {
     border-radius: 2px;
     margin-right: 1rem;
 }
-
 
 .seperation-bar {
     display: flex;
