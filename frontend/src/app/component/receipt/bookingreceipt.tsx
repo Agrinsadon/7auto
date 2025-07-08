@@ -1,11 +1,28 @@
-import './bookingreceipt.css'
+import './bookingreceipt.css';
 
-const BookingReceipt = () => {
-    return(
-        <div className='receipt-container'>
-            <p>Yhteenveto</p>
-        </div>
-    )
+interface Service {
+  name: string;
+  description: string;
+  price: string;
 }
 
-export default BookingReceipt
+interface Props {
+  selectedServices: Service[];
+}
+
+const BookingReceipt = ({ selectedServices }: Props) => {
+  return (
+    <div className='receipt-container'>
+      <p>Yhteenveto</p>
+      <ul>
+        {selectedServices.map((service, index) => (
+          <li key={index}>
+            <strong>{service.name}</strong> - {service.price}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default BookingReceipt;
