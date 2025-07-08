@@ -17,7 +17,6 @@ const BookingFrame = ({ onText, children }: BookingFrameProps) => {
         <div className="booking-frame-footer">
           <div className="footer-left">
             <button className="footer-button">← takaisin</button>
-            <button className="footer-button">seuraava →</button>
           </div>
           <div className="footer-divider" />
           <div className="footer-right">

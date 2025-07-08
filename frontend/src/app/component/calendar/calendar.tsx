@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './calendar.css';
 import { initGoogleCalendar, fetchCalendarEvents } from './googlecalendar';
 
-const weekdays = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+const weekdays = ['MA', 'TI', 'KE', 'TO', 'PE', 'LA', 'SU'];
 
 interface CalendarEvent {
   start: { dateTime: string };
@@ -75,14 +75,7 @@ const BookingCalendar = () => {
 
       {/* TIME SLOTS */}
       {selectedDate && (
-        <>
-          <p className="calendar-text">
-            Valitse ajanvarausaika{' '}
-            <span className="calendar-date-link">
-              {selectedDate.toLocaleDateString('fi-FI', { day: 'numeric', month: 'long' })}
-            </span>
-          </p>
-
+        <>    
           <div className="timeslot-grid">
             {["8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:30"].map(slot => (
               <div
