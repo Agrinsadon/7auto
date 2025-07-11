@@ -8,10 +8,28 @@
     display: block;
     padding-left: 20px;
     padding-right: 20px;
+    flex: 1;
 }
 
 .booking-separator {
     background-color: #ccc; /* Light gray color */
     height: auto;
     width: 1px; /* Thin vertical line */
-  }
+    margin: 0 1rem;
+}
+
+.booking-receipt-side {
+    flex: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* 🔧 When showing LastFrame: switch to single column */
+.booking-wash-content.single-column {
+    display: block;
+}
+
+.booking-wash-content.single-column .booking-separator,
+.booking-wash-content.single-column .booking-receipt-side {
+    display: none;
+}

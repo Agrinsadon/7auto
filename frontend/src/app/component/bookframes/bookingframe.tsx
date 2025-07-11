@@ -1,12 +1,12 @@
-import RemoveButton from '../buttons/removebutton';
 import './bookingframe.css';
 
 interface BookingFrameProps {
   onText?: string;
+  onBack?: () => void;
   children?: React.ReactNode;
 }
 
-const BookingFrame = ({ onText, children }: BookingFrameProps) => {
+const BookingFrame = ({ onText, onBack, children }: BookingFrameProps) => {
   return (
     <div className="booking-frame-container">
       <div className="booking-frame">
@@ -16,7 +16,7 @@ const BookingFrame = ({ onText, children }: BookingFrameProps) => {
         {children}
         <div className="booking-frame-footer">
           <div className="footer-left">
-            <button className="footer-button">← takaisin</button>
+            <button className="footer-button" onClick={onBack}>← takaisin</button>
           </div>
           <div className="footer-divider" />
           <div className="footer-right">
