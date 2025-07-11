@@ -21,8 +21,8 @@ const BookingFrame = ({ onText, onBack, children }: BookingFrameProps) => {
           <div className="footer-divider" />
           <div className="footer-right">
             <p>
-              Tarvitsetko apua? Soita numeroon <strong>040 828 2655</strong> tai lähetä sähköpostia osoitteeseen{' '}
-              <strong>info@carwashderby.fi</strong>.
+              Tarvitsetko apua? Soita numeroon <strong>040 828 26322332</strong> tai lähetä sähköpostia osoitteeseen{' '}
+              <strong>zäät.fi</strong>.
             </p>
           </div>
         </div>

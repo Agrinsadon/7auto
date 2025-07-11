@@ -24,6 +24,25 @@ const Calendar = ({
   const startDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
   const adjustedStart = startDay === 0 ? 6 : startDay - 1;
 
+  const generateTimeSlots = (start = "08:00", end = "16:00") => {
+    const slots: string[] = [];
+    let [hour, minute] = start.split(":").map(Number);
+    const [endHour, endMinute] = end.split(":").map(Number);
+  
+    while (hour < endHour || (hour === endHour && minute <= endMinute)) {
+      const hStr = hour.toString().padStart(2, "0");
+      const mStr = minute.toString().padStart(2, "0");
+      slots.push(`${hStr}:${mStr}`);
+      minute += 30;
+      if (minute >= 60) {
+        minute = 0;
+        hour++;
+      }
+    }
+  
+    return slots;
+  };  
+
   const handleTimeSelect = (slot: string) => {
     if (selectedDate) {
       setSelectedTime(slot);
@@ -61,7 +80,7 @@ const Calendar = ({
               key={day}
               className={`calendar-day ${
                 selectedDate?.getDate() === day && selectedDate?.getMonth() === currentDate.getMonth()
-                  ? 'selected'
+                  ? 'selected-day'
                   : ''
               }`}
               onClick={() => setSelectedDate(date)}
@@ -74,17 +93,24 @@ const Calendar = ({
 
       {selectedDate && (
         <div className="timeslot-grid">
-          {["8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:30"].map(slot => (
-            <div
-              key={slot}
-              className={`timeslot ${selectedTime === slot ? 'selected-slot' : ''}`}
-              onClick={() => handleTimeSelect(slot)}
-            >
-              {slot}
+          {generateTimeSlots().map(slot => (
+            <div className="timeslot-container" key={slot}>
+              <div
+                className={`timeslot ${selectedTime === slot ? 'selected-slot' : ''}`}
+                data-time={slot}
+                onClick={() => handleTimeSelect(slot)}
+              />
+              {slot.endsWith(':00') && (
+                <div className="timeslot-label">{slot}</div>
+              )}
             </div>
           ))}
         </div>
       )}
+
+
+
+
     </div>
   );
 };
