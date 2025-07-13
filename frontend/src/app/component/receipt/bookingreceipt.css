@@ -1,11 +1,31 @@
-.booking-receipt-side {
+
+    .booking-receipt-title-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .booking-receipt-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: center;
+  }
+  
+  .line {
+    flex: 1;
+    height: 1px;
+    background-color: #ccc;
+  }
+  
+  .receipt-services {
+    margin-top: 2rem;
+  }
+  
+  .booking-receipt-side {
     display: block;
     margin: 2rem 0.5rem;
     text-align: left;
     overflow-y: auto;
-}
-
-.booking-receipt-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
+  }
+  

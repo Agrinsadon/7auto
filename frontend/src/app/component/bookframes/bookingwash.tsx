@@ -33,19 +33,27 @@ const BookingWash = ({ goBack }: BookingWashProps) => {
   const handleCategorySelect = (category: string | null) => {
     setSelectedCategory(category);
     setCurrentStep(category ? "service" : "category");
-    setSelectedServices([]); // Reset services when category changes
+    setSelectedServices([]);
     setActiveService(null);
+    setSelectedDate(null);
+    setSelectedTime(null);
   };
 
   const handleServiceSelect = (service: Service) => {
     const isAlreadySelected = activeService === service.name;
 
     if (isAlreadySelected) {
+      // Deselect
       setSelectedServices([]);
       setActiveService(null);
+      setSelectedDate(null);
+      setSelectedTime(null);
     } else {
+      // Replace old service
       setSelectedServices([service]);
       setActiveService(service.name);
+      setSelectedDate(null);
+      setSelectedTime(null);
       setCurrentStep("calendar");
     }
   };

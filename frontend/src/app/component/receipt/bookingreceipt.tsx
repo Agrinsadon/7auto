@@ -21,7 +21,7 @@ const BookingReceipt = ({ selectedServices, selectedDate, selectedTime }: Props)
     if (selectedServices.length > 0) {
       const timeout = setTimeout(() => {
         setShowServices(true);
-      }, 100); // Fade-in delay
+      }, 100);
       return () => clearTimeout(timeout);
     } else {
       setShowServices(false);
@@ -49,9 +49,13 @@ const BookingReceipt = ({ selectedServices, selectedDate, selectedTime }: Props)
 
   return (
     <div className="receipt-container">
-      <p className="booking-receipt-header">Yhteenveto</p>
+      <div className="booking-receipt-title-line">
+        <div className="line" />
+        <span className="booking-receipt-header">Yhteenveto</span>
+        <div className="line" />
+      </div>
 
-      {/* Services List with Fade-In */}
+      {/* Services List */}
       <div
         className="receipt-services"
         style={{
@@ -71,7 +75,7 @@ const BookingReceipt = ({ selectedServices, selectedDate, selectedTime }: Props)
 
       <br />
 
-      {/* Date + Time with Fade-In */}
+      {/* Date + Time */}
       <div
         className="receipt-datetime"
         style={{
