@@ -1,4 +1,5 @@
 import './bookingreceipt.css';
+import { useEffect, useState } from 'react';
 
 interface Service {
   name: string;
@@ -13,33 +14,81 @@ interface Props {
 }
 
 const BookingReceipt = ({ selectedServices, selectedDate, selectedTime }: Props) => {
+  const [showDateTime, setShowDateTime] = useState(false);
+  const [showServices, setShowServices] = useState(false);
+
+  useEffect(() => {
+    if (selectedServices.length > 0) {
+      const timeout = setTimeout(() => {
+        setShowServices(true);
+      }, 100); // Fade-in delay
+      return () => clearTimeout(timeout);
+    } else {
+      setShowServices(false);
+    }
+  }, [selectedServices]);
+
+  useEffect(() => {
+    if (selectedDate && selectedTime) {
+      const timeout = setTimeout(() => {
+        setShowDateTime(true);
+      }, 100);
+      return () => clearTimeout(timeout);
+    } else {
+      setShowDateTime(false);
+    }
+  }, [selectedDate, selectedTime]);
+
   const formattedDate = selectedDate
     ? selectedDate.toLocaleDateString('fi-FI', {
-        weekday: 'long',
         year: 'numeric',
-        month: 'long',
+        month: 'numeric',
         day: 'numeric',
       })
     : null;
 
   return (
-    <div className='receipt-container'>
-      <p><strong>Yhteenveto</strong></p>
-      
-      <ul>
-        {selectedServices.map((service, index) => (
-          <li key={index}>
-            <strong>{service.name}</strong> – {service.price}
-          </li>
-        ))}
-      </ul>
+    <div className="receipt-container">
+      <p className="booking-receipt-header">Yhteenveto</p>
 
-      {selectedDate && selectedTime && (
-        <div className="receipt-datetime">
-          <p><strong>Päivä:</strong> {formattedDate}</p>
-          <p><strong>Aika:</strong> {selectedTime}</p>
-        </div>
-      )}
+      {/* Services List with Fade-In */}
+      <div
+        className="receipt-services"
+        style={{
+          opacity: showServices ? 1 : 0,
+          transform: showServices ? 'translateY(0)' : 'translateY(10px)',
+          transition: 'opacity 0.5s ease, transform 0.5s ease',
+        }}
+      >
+        <ul>
+          {selectedServices.map((service, index) => (
+            <p key={index}>
+              - {service.name}: {service.price}
+            </p>
+          ))}
+        </ul>
+      </div>
+
+      <br />
+
+      {/* Date + Time with Fade-In */}
+      <div
+        className="receipt-datetime"
+        style={{
+          opacity: showDateTime ? 1 : 0,
+          transform: showDateTime ? 'translateY(0)' : 'translateY(10px)',
+          transition: 'opacity 0.5s ease, transform 0.5s ease',
+          height: showDateTime ? 'auto' : 0,
+          overflow: 'hidden',
+        }}
+      >
+        {selectedDate && selectedTime && (
+          <>
+            <p>- Päivä: {formattedDate}</p>
+            <p>- Aika: {selectedTime}</p>
+          </>
+        )}
+      </div>
     </div>
   );
 };
