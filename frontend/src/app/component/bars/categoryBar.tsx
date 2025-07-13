@@ -21,14 +21,27 @@ const category = [
 ];
 
 interface Props {
-  onSelectCategory: (categoryName: string) => void;
+  onSelectCategory: (categoryName: string | null) => void;
+  selectedCategory: string | null;
 }
 
-const Categorybar = ({ onSelectCategory }: Props) => {
+const Categorybar = ({ onSelectCategory, selectedCategory }: Props) => {
+  const handleClick = (categoryName: string) => {
+    if (selectedCategory === categoryName) {
+      onSelectCategory(null); // Deselect
+    } else {
+      onSelectCategory(categoryName); // Select new
+    }
+  };
+
   return (
     <>
       {category.map((item, index) => (
-        <div className="info-bar" key={index} onClick={() => onSelectCategory(item.name)}>
+        <div
+          className={`info-bar ${item.name === selectedCategory ? "active" : ""}`}
+          key={index}
+          onClick={() => handleClick(item.name)}
+        >
           <div className="seperation-bar">
             <Image className="img" src={item.img} alt={item.name} width={45} height={45} />
             <p className="service">{item.name}</p>

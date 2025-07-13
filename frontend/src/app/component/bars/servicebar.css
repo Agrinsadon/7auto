@@ -79,4 +79,10 @@
     font-size: 10px;
     padding-top: 0.3rem;
   }
+  .info-bar.active {
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
   

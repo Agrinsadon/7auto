@@ -16,15 +16,20 @@ const services = [
 interface Props {
   selectedCategory: string;
   onServiceSelect: (service: any) => void;
+  activeService: string | null;
 }
 
-const ServiceBar = ({ selectedCategory, onServiceSelect }: Props) => {
+const ServiceBar = ({ selectedCategory, onServiceSelect, activeService }: Props) => {
   const filteredServices = services.filter(service => service.category === selectedCategory);
 
   return (
     <>
       {filteredServices.map((item, index) => (
-        <div className="info-bar" key={index} onClick={() => onServiceSelect(item)}>
+        <div
+          className={`info-bar ${activeService === item.name ? "active" : ""}`}
+          key={index}
+          onClick={() => onServiceSelect(item)}
+        >
           <div className="middle-bar">
             <p className="service">{item.name}</p>
             <p className="description">{item.description}</p>

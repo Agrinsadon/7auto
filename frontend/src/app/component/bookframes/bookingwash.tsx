@@ -4,7 +4,7 @@ import BookingReceipt from "../receipt/bookingreceipt";
 import BookingFrame from "./bookingframe";
 import "./bookingwash.css";
 import ServiceBar from "../bars/serviceBar";
-import Calendar from "../calendar/calendar";  // Make sure this matches the filename/component name
+import Calendar from "../calendar/calendar";
 import ContactForm from "../contact/contactform";
 import LastFrame from "./lastframe";
 
@@ -28,15 +28,26 @@ const BookingWash = ({ goBack }: BookingWashProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [contactInfo, setContactInfo] = useState<any>(null);
+  const [activeService, setActiveService] = useState<string | null>(null);
 
-  const handleCategorySelect = (category: string) => {
+  const handleCategorySelect = (category: string | null) => {
     setSelectedCategory(category);
-    setCurrentStep("service");
+    setCurrentStep(category ? "service" : "category");
+    setSelectedServices([]); // Reset services when category changes
+    setActiveService(null);
   };
 
   const handleServiceSelect = (service: Service) => {
-    setSelectedServices(prev => [...prev, service]);
-    setCurrentStep("calendar");
+    const isAlreadySelected = activeService === service.name;
+
+    if (isAlreadySelected) {
+      setSelectedServices([]);
+      setActiveService(null);
+    } else {
+      setSelectedServices([service]);
+      setActiveService(service.name);
+      setCurrentStep("calendar");
+    }
   };
 
   const handleDateTimeSelected = (date: Date, time: string) => {
@@ -51,13 +62,13 @@ const BookingWash = ({ goBack }: BookingWashProps) => {
   };
 
   const handleFinalConfirm = () => {
-    console.log('✅ Varaus valmis:', {
+    console.log("✅ Varaus valmis:", {
       services: selectedServices,
       date: selectedDate,
       time: selectedTime,
       contact: contactInfo,
     });
-    alert('Kiitos varauksesta! Saat vahvistuksen sähköpostiin.');
+    alert("Kiitos varauksesta! Saat vahvistuksen sähköpostiin.");
   };
 
   const handleBack = () => {
@@ -83,37 +94,50 @@ const BookingWash = ({ goBack }: BookingWashProps) => {
       }
       onBack={handleBack}
     >
-      <div className={`booking-wash-content ${currentStep === "confirm" ? 'single-column' : ''}`}>
+      <div className={`booking-wash-content ${currentStep === "confirm" ? "single-column" : ""}`}>
         <div className="booking-category-side">
           {currentStep === "category" && (
-            <Categorybar onSelectCategory={handleCategorySelect} />
+            <Categorybar
+              onSelectCategory={handleCategorySelect}
+              selectedCategory={selectedCategory}
+            />
           )}
-          {currentStep === "service" && (
-            <ServiceBar selectedCategory={selectedCategory!} onServiceSelect={handleServiceSelect} />
+
+          {currentStep === "service" && selectedCategory && (
+            <ServiceBar
+              selectedCategory={selectedCategory}
+              onServiceSelect={handleServiceSelect}
+              activeService={activeService}
+            />
           )}
+
           {currentStep === "calendar" && (
             <Calendar
               onDateTimeSelected={handleDateTimeSelected}
               selectedDate={selectedDate}
               selectedTime={selectedTime}
-              setSelectedDate={setSelectedDate}       // pass setters here
+              setSelectedDate={setSelectedDate}
               setSelectedTime={setSelectedTime}
             />
           )}
+
           {currentStep === "contact" && (
             <ContactForm onSubmit={handleContactSubmit} prefill={contactInfo} />
           )}
-          {currentStep === "confirm" && (
+
+          {currentStep === "confirm" && selectedDate && selectedTime && contactInfo && (
             <LastFrame
               selectedServices={selectedServices}
-              selectedDate={selectedDate!}
-              selectedTime={selectedTime!}
+              selectedDate={selectedDate}
+              selectedTime={selectedTime}
               contact={contactInfo}
               onConfirm={handleFinalConfirm}
             />
           )}
         </div>
+
         {currentStep !== "confirm" && <div className="booking-separator"></div>}
+
         {currentStep !== "confirm" && (
           <div className="booking-receipt-side">
             <BookingReceipt

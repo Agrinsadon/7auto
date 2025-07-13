@@ -1,7 +1,8 @@
 .booking-receipt-side {
     display: block;
-    margin: 1rem auto;
+    margin: 2rem 0.5rem;
     text-align: left;
+    overflow-y: auto;
 }
 
 .booking-receipt-header {

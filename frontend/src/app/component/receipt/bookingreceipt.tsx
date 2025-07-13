@@ -85,6 +85,7 @@ const BookingReceipt = ({ selectedServices, selectedDate, selectedTime }: Props)
         {selectedDate && selectedTime && (
           <>
             <p>- Päivä: {formattedDate}</p>
+            <br />
             <p>- Aika: {selectedTime}</p>
           </>
         )}
