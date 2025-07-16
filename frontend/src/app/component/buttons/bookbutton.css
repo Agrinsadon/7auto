@@ -1,24 +1,66 @@
 .book-button {
+  position: relative;
   padding: 10px 20px;
-  background-color: transparent;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  border: 2px solid;
+  background-color: transparent;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s ease;
 }
 
-/* Variants */
+.book-button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0%;
+  width: 100%;
+  z-index: 0;
+  transition: height 0.3s ease;
+}
+
+.book-button span {
+  position: relative;
+  z-index: 1;
+}
+
 .book-button.dark {
-  border: 2px solid white;
+  border-color: white;
   color: white;
 }
 
-.book-button.light {
-  border: 2px solid black;
+.book-button.dark::before {
+  background-color: white;
+}
+
+.book-button.dark:hover::before {
+  height: 100%;
+}
+
+.book-button.dark:hover {
   color: black;
 }
 
-/* Optional Sizes — Only applied if size is passed */
+.book-button.light {
+  border-color: black;
+  color: black;
+}
+
+.book-button.light::before {
+  background-color: black;
+}
+
+.book-button.light:hover::before {
+  height: 100%;
+}
+
+.book-button.light:hover {
+  color: white;
+}
+
 .book-button.small {
   padding: 8px 12px;
   font-size: 14px;
