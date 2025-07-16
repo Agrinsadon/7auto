@@ -1,17 +1,20 @@
 import './bookingframe.css';
+import RemoveButton from '../buttons/removebutton';
 
 interface BookingFrameProps {
   onText?: string;
   onBack?: () => void;
+  onClose?: () => void;
   children?: React.ReactNode;
 }
 
-const BookingFrame = ({ onText, onBack, children }: BookingFrameProps) => {
+const BookingFrame = ({ onText, onBack, onClose, children }: BookingFrameProps) => {
   return (
     <div className="booking-frame-container">
       <div className="booking-frame">
         <div className="booking-frame-header">
           <p>{onText}</p>
+          {onClose && <RemoveButton onClick={onClose} />}
         </div>
         {children}
         <div className="booking-frame-footer">

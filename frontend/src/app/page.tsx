@@ -10,10 +10,14 @@ export default function Home() {
     setShowFrame(true);
   };
 
+  const handleClose = () => {
+    setShowFrame(false);
+  };
+
   return (
     <div>
-      <BookButton onClick={handleClick} onText="Varaa aika" variant="light" size="large"/>
-      {showFrame && <BookingStart />}
+      <BookButton onClick={handleClick} onText="Varaa aika" variant="light" size="large" />
+      {showFrame && <BookingStart onClose={handleClose} />}
     </div>
   );
 }

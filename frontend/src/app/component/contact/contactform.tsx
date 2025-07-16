@@ -79,7 +79,7 @@ const ContactForm = ({ onSubmit, prefill }: ContactFormProps) => {
       <div className="contact-button">
         <BookButton
           onClick={() => onSubmit(form)}
-          onText="Vahvista varaus"
+          onText="Vahvista tiedot"
           variant="light"
           size="small"
         />

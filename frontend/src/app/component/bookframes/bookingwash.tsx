@@ -17,11 +17,12 @@ interface Service {
 
 interface BookingWashProps {
   goBack: () => void;
+  onClose: () => void;
 }
 
 type Step = "category" | "service" | "calendar" | "contact" | "confirm";
 
-const BookingWash = ({ goBack }: BookingWashProps) => {
+const BookingWash = ({ goBack, onClose }: BookingWashProps) => {
   const [currentStep, setCurrentStep] = useState<Step>("category");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedServices, setSelectedServices] = useState<Service[]>([]);
@@ -43,13 +44,11 @@ const BookingWash = ({ goBack }: BookingWashProps) => {
     const isAlreadySelected = activeService === service.name;
 
     if (isAlreadySelected) {
-      // Deselect
       setSelectedServices([]);
       setActiveService(null);
       setSelectedDate(null);
       setSelectedTime(null);
     } else {
-      // Replace old service
       setSelectedServices([service]);
       setActiveService(service.name);
       setSelectedDate(null);
@@ -101,6 +100,7 @@ const BookingWash = ({ goBack }: BookingWashProps) => {
           : "Tarkista ja vahvista"
       }
       onBack={handleBack}
+      onClose={onClose}
     >
       <div className={`booking-wash-content ${currentStep === "confirm" ? "single-column" : ""}`}>
         <div className="booking-category-side">
