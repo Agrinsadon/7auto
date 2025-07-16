@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <div>
-      <BookButton onClick={handleClick} onText="Varaa aika" />
+      <BookButton onClick={handleClick} onText="Varaa aika" variant="light" size="large"/>
       {showFrame && <BookingStart />}
     </div>
   );

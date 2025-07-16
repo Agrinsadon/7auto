@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './contactform.css';
+import BookButton from '../buttons/bookbutton';
 
 interface ContactFormProps {
   onSubmit: (formData: any) => void;
@@ -8,6 +9,7 @@ interface ContactFormProps {
     surname?: string;
     email?: string;
     phone?: string;
+    plate?: string;
   };
 }
 
@@ -17,9 +19,9 @@ const ContactForm = ({ onSubmit, prefill }: ContactFormProps) => {
     surname: '',
     email: '',
     phone: '',
+    plate: '', // 👈 added
   });
 
-  // When prefill changes, update form state
   useEffect(() => {
     if (prefill) {
       setForm({
@@ -27,6 +29,7 @@ const ContactForm = ({ onSubmit, prefill }: ContactFormProps) => {
         surname: prefill.surname ?? '',
         email: prefill.email ?? '',
         phone: prefill.phone ?? '',
+        plate: prefill.plate ?? '', // 👈 added
       });
     }
   }, [prefill]);
@@ -37,32 +40,50 @@ const ContactForm = ({ onSubmit, prefill }: ContactFormProps) => {
 
   return (
     <div className="contact-form">
-      <h3>Täytä yhteystiedot</h3>
-      <input
-        name="name"
-        placeholder="Etunimi"
-        value={form.name}
-        onChange={handleChange}
-      />
-      <input
-        name="surname"
-        placeholder="Sukunimi"
-        value={form.surname}
-        onChange={handleChange}
-      />
+      <div className="contact-form-row">
+        <input
+          name="name"
+          placeholder="Etunimi*"
+          value={form.name}
+          onChange={handleChange}
+        />
+        <input
+          name="surname"
+          placeholder="Sukunimi*"
+          value={form.surname}
+          onChange={handleChange}
+        />
+      </div>
+
       <input
         name="email"
-        placeholder="Sähköposti"
+        placeholder="Sähköposti*"
         value={form.email}
         onChange={handleChange}
       />
+
       <input
         name="phone"
-        placeholder="Puhelinnumero"
+        placeholder="Puhelinnumero*"
         value={form.phone}
         onChange={handleChange}
       />
-      <button onClick={() => onSubmit(form)}>Vahvista varaus</button>
+
+      <input
+        name="plate"
+        placeholder="Rekisterinumero*"
+        value={form.plate}
+        onChange={handleChange}
+      />
+
+      <div className="contact-button">
+        <BookButton
+          onClick={() => onSubmit(form)}
+          onText="Vahvista varaus"
+          variant="light"
+          size="small"
+        />
+      </div>
     </div>
   );
 };

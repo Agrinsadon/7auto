@@ -1,11 +1,30 @@
 .book-button {
-    width: 200px;
-    height: 50px;
-    background-color: transparent;
-    border: 2px solid white;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
+  padding: 10px 20px;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Variants */
+.book-button.dark {
+  border: 2px solid white;
+  color: white;
+}
+
+.book-button.light {
+  border: 2px solid black;
+  color: black;
+}
+
+/* Optional Sizes — Only applied if size is passed */
+.book-button.small {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.book-button.large {
+  padding: 14px 28px;
+  font-size: 18px;
+}

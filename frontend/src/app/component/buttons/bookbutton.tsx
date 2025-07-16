@@ -3,17 +3,22 @@ import "./bookbutton.css";
 
 interface BookButtonProps {
   onClick: () => void;
-  onText ?: string;
+  onText?: string;
+  variant?: "light" | "dark";
+  size?: "small" | "large"; // default is medium (no class needed)
 }
 
+export default function BookButton({
+  onClick,
+  onText,
+  variant = "dark",
+  size,
+}: BookButtonProps) {
+  const sizeClass = size ? size : ""; // only apply size class if set
 
-
-export default function BookButton({ onClick, onText }: BookButtonProps) {
   return (
-    <>
-      <button className="book-button" onClick={onClick}>
-        <span className="button-text">{onText}</span>
-      </button>
-    </>
+    <button className={`book-button ${variant} ${sizeClass}`} onClick={onClick}>
+      <span className="button-text">{onText}</span>
+    </button>
   );
 }
