@@ -44,7 +44,7 @@ const Categorybar = ({ onSelectCategory, selectedCategory }: Props) => {
         >
           <div className="seperation-bar">
             <Image className="img" src={item.img} alt={item.name} width={45} height={45} />
-            <p className="service">{item.name}</p>
+            <p className="middle-bar">{item.name}</p>
           </div>
           <div className="seperation-bar-second">
             <p className="amount">{item.amount}</p>

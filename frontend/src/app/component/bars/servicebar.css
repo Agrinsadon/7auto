@@ -78,6 +78,7 @@
   .description {
     font-size: 10px;
     padding-top: 0.3rem;
+    transition: transform 0.3s ease-out;
   }
   .info-bar.active {
     border: 2px solid black;
