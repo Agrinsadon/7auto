@@ -5,7 +5,10 @@ import bodyParser from 'body-parser';
 import { sendBookingEmail } from './mailer';
 import { addEventToCalendar } from './calendar';
 
+console.log('Starting server...');
+
 dotenv.config();
+console.log('Environment loaded');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -21,6 +24,8 @@ app.post('/api/book', async (req, res) => {
   try {
     const booking = req.body;
 
+    console.log('Received booking:', booking);
+
     await sendBookingEmail(booking);
     await addEventToCalendar(booking);
 
@@ -32,5 +37,5 @@ app.post('/api/book', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });
