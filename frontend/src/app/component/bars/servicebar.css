@@ -20,7 +20,6 @@
     border-radius: 0.5rem;
     overflow: hidden;
     margin: 1rem auto;
-  
     opacity: 0;
     transform: translateY(20px);
     animation: fadeSlideIn 0.5s ease-out forwards;
@@ -84,6 +83,10 @@
     border: 2px solid black;
     border-radius: 8px;
     background-color: #f9f9f9;
+  }
+
+  .info-bar:hover {
+    border: 2px solid black;
   }
   
   

@@ -1,3 +1,4 @@
+import BookButton from '../buttons/bookbutton';
 import './lastframe.css';
 
 interface Service {
@@ -15,48 +16,52 @@ interface Props {
     surname: string;
     email: string;
     phone: string;
+    plate: string | number;
   };
   onConfirm: () => void;
 }
 
 const LastFrame = ({ selectedServices, selectedDate, selectedTime, contact, onConfirm }: Props) => {
   const formattedDate = selectedDate.toLocaleDateString('fi-FI', {
-    weekday: 'long',
     year: 'numeric',
-    month: 'long',
+    month: 'numeric',
     day: 'numeric',
   });
 
   return (
     <div className="lastframe-container">
-      <h2>Vahvista varaus</h2>
-
       <div className="section">
-        <h3>Palvelut</h3>
-        <ul>
+        <h3 className='detail-header'>Palvelut</h3>
+        <p>
           {selectedServices.map((service, idx) => (
-            <li key={idx}>
-              <strong>{service.name}</strong> – {service.price}
+            <p key={idx}>
+              <strong>{service.name}</strong>: {service.price}
               <br />
               <span className="desc">{service.description}</span>
-            </li>
+            </p>
           ))}
-        </ul>
+        </p>
       </div>
 
       <div className="section">
-        <h3>Aika ja päivä</h3>
-        <p><strong>{formattedDate}</strong> klo <strong>{selectedTime}</strong></p>
+        <h3 className='detail-header'>Aika ja päivä</h3>
+        <p><strong>{formattedDate}</strong>, klo: <strong>{selectedTime}</strong></p>
       </div>
 
       <div className="section">
-        <h3>Yhteystiedot</h3>
+        <h3 className='detail-header'>Yhteystiedot</h3>
         <p><strong>Nimi:</strong> {contact.name} {contact.surname}</p>
         <p><strong>Sähköposti:</strong> {contact.email}</p>
         <p><strong>Puhelin:</strong> {contact.phone}</p>
+        <p><strong>Rekisteritunnus:</strong> {contact.plate}</p>
       </div>
 
-      <button className="confirm-button" onClick={onConfirm}>Vahvista varaus</button>
+      <div className="bottom-section">
+        <p className='bottom-text'>Tarkista varauksesi tiedot. Voit palata takaisin muokkaamaan niitä tai napsauttaa lähetä-painiketta vahvistaaksesi varauksesi.</p>
+        <div className='last-button'>
+        <BookButton onClick={onConfirm} onText='Lähetä varaus' variant='light'></BookButton>
+        </div>
+      </div>
     </div>
   );
 };
