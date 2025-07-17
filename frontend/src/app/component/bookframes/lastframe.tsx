@@ -34,11 +34,11 @@ const LastFrame = ({ selectedServices, selectedDate, selectedTime, contact, onCo
         <h3 className='detail-header'>Palvelut</h3>
         <p>
           {selectedServices.map((service, idx) => (
-            <p key={idx}>
+            <li key={idx}>
               <strong>{service.name}</strong>: {service.price}
               <br />
               <span className="desc">{service.description}</span>
-            </p>
+            </li>
           ))}
         </p>
       </div>

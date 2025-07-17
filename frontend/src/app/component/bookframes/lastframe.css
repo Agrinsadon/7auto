@@ -9,6 +9,8 @@
   .section {
     border-bottom: 1px solid #ccc;
     padding-bottom: 0.5rem;
+    list-style-type: none;
+
   }
 
   .section p {
@@ -31,13 +33,13 @@
 
   .bottom-section {
     display: flex;
-    margin-top: 0.6rem;
+    margin-top: 0.7rem;
     justify-content: space-between;
     align-items: center;
   }
 
   .bottom-text {
     font-size: 14px;
-    width: 50%;
+    width: 60%;
   }
   

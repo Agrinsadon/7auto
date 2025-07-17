@@ -68,15 +68,34 @@ const BookingWash = ({ goBack, onClose }: BookingWashProps) => {
     setCurrentStep("confirm");
   };
 
-  const handleFinalConfirm = () => {
-    console.log("✅ Varaus valmis:", {
+  const handleFinalConfirm = async () => {
+    const bookingPayload = {
       services: selectedServices,
-      date: selectedDate,
+      date: selectedDate?.toISOString().split('T')[0],
       time: selectedTime,
       contact: contactInfo,
-    });
-    alert("Kiitos varauksesta! Saat vahvistuksen sähköpostiin.");
+    };
+  
+    try {
+      const response = await fetch('http://localhost:5000/api/book', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookingPayload),
+      });
+  
+      if (response.ok) {
+        alert('Kiitos varauksesta! Saat vahvistuksen sähköpostiin.');
+      } else {
+        alert('Jokin meni pieleen varauksen kanssa. Yritä uudelleen.');
+      }
+    } catch (error) {
+      console.error('Error sending booking:', error);
+      alert('Virhe varauksen lähetyksessä.');
+    }
   };
+  
 
   const handleBack = () => {
     if (currentStep === "confirm") setCurrentStep("contact");
