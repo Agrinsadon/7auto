@@ -1,3 +1,4 @@
+// server.ts or index.ts
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -5,10 +6,7 @@ import bodyParser from 'body-parser';
 import { sendBookingEmail } from './mailer';
 import { addEventToCalendar } from './calendar';
 
-console.log('Starting server...');
-
 dotenv.config();
-console.log('Environment loaded');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -23,15 +21,14 @@ app.get('/', (req, res) => {
 app.post('/api/book', async (req, res) => {
   try {
     const booking = req.body;
-
-    console.log('Received booking:', booking);
+    console.log('📨 Received booking:', booking);
 
     await sendBookingEmail(booking);
     await addEventToCalendar(booking);
 
     res.status(200).json({ message: 'Booking processed successfully' });
   } catch (error) {
-    console.error('Booking error:', error);
+    console.error('❌ Booking error:', error);
     res.status(500).json({ message: 'Booking failed', error });
   }
 });
