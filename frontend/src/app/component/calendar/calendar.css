@@ -205,3 +205,16 @@
   font-size: 13px;
   line-height: 1.2;
 }
+
+.calendar-day.disabled-day {
+  background-color: #eee;
+  color: #999;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.timeslot.disabled-slot {
+  background-color: #ccc;
+  cursor: not-allowed;
+  pointer-events: none;
+}
