@@ -151,8 +151,9 @@ const BookingWash = ({ goBack, onClose }: BookingWashProps) => {
           {currentStep === "contact" && (
             <ContactForm onSubmit={handleContactSubmit} prefill={contactInfo} />
           )}
+        </div>
 
-          {currentStep === "confirm" && selectedDate && selectedTime && contactInfo && (
+        {currentStep === "confirm" && selectedDate && selectedTime && contactInfo && (
             <LastFrame
               selectedServices={selectedServices}
               selectedDate={selectedDate}
@@ -161,7 +162,6 @@ const BookingWash = ({ goBack, onClose }: BookingWashProps) => {
               onConfirm={handleFinalConfirm}
             />
           )}
-        </div>
 
         {currentStep !== "confirm" && <div className="booking-separator"></div>}
 

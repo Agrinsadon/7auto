@@ -1,6 +1,7 @@
 'use client';
 import BookingFrame from './bookingframe';
 import BookingWash from './bookingwash';
+import BookingFix from './bookingfixstart'; // ✅ Import your new BookingFix
 import BookButton from '../buttons/bookbutton';
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -10,14 +11,20 @@ interface BookingStartProps {
   onClose: () => void;
 }
 
+// Track the selected booking type
+type BookingType = 'none' | 'wash' | 'fix';
+
 const BookingHuoltoPesu = ({ onClose }: BookingStartProps) => {
-  const [showBooking, setShowBooking] = useState(false);
+  const [bookingType, setBookingType] = useState<BookingType>('none');
+
+  const goBack = () => setBookingType('none');
 
   return (
     <>
-      {!showBooking ? (
+      {bookingType === 'none' ? (
         <BookingFrame onText="Valitse Varauspalvelu" onClose={onClose}>
           <div className="booking-start-content">
+            {/* Huolto */}
             <div className="booking-side">
               <Image
                 src="/carfix.png"
@@ -29,12 +36,13 @@ const BookingHuoltoPesu = ({ onClose }: BookingStartProps) => {
               <div className="overlay" />
               <div className="booking-button-wrapper">
                 <BookButton
-                  onClick={() => alert('Varaus tehty!')}
+                  onClick={() => setBookingType('fix')}
                   onText="Varaa Huolto"
                 />
               </div>
             </div>
 
+            {/* Pesu */}
             <div className="booking-side">
               <Image
                 src="/carwash.png"
@@ -46,15 +54,17 @@ const BookingHuoltoPesu = ({ onClose }: BookingStartProps) => {
               <div className="overlay" />
               <div className="booking-button-wrapper">
                 <BookButton
-                  onClick={() => setShowBooking(true)}
+                  onClick={() => setBookingType('wash')}
                   onText="Varaa Pesu"
                 />
               </div>
             </div>
           </div>
         </BookingFrame>
+      ) : bookingType === 'wash' ? (
+        <BookingWash goBack={goBack} onClose={onClose} />
       ) : (
-        <BookingWash goBack={() => setShowBooking(false)} onClose={onClose} />
+        <BookingFix goBack={goBack} onClose={onClose} />
       )}
     </>
   );

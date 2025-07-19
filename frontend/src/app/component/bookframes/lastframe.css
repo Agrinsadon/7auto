@@ -4,13 +4,15 @@
     margin-top: 1rem;
     gap: 1rem;
     overflow: hidden;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .section {
     border-bottom: 1px solid #ccc;
     padding-bottom: 0.5rem;
     list-style-type: none;
-
+    overflow-x: scroll;
   }
 
   .section p {
@@ -29,6 +31,7 @@
 
   .desc {
     font-size: 14px;
+    max-width: 50%;
   }
 
   .bottom-section {
