@@ -77,7 +77,7 @@ const BookingWash = ({ goBack, onClose }: BookingWashProps) => {
     };
   
     try {
-      const response = await fetch('http://localhost:4000/api/book', {
+      const response = await fetch('http://localhost:4000/api/book/wash', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

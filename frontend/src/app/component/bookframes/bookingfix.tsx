@@ -43,14 +43,14 @@ const BookingFix = ({ goBack, onClose, initialDescription }: BookingFixFlowProps
       time: selectedTime,
       contact: contactInfo,
     };
-
+  
     try {
-      const response = await fetch('http://localhost:4000/api/book', {
+      const response = await fetch('http://localhost:4000/api/book/fix', {  // <== changed endpoint
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bookingPayload),
       });
-
+  
       if (response.ok) {
         alert('Kiitos varauksesta! Saat vahvistuksen sähköpostiin.');
       } else {
@@ -61,6 +61,7 @@ const BookingFix = ({ goBack, onClose, initialDescription }: BookingFixFlowProps
       alert('Virhe varauksen lähetyksessä.');
     }
   };
+  
 
   const handleBack = () => {
     if (step === 'confirm') setStep('contact');

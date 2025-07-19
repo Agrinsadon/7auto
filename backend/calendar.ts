@@ -1,4 +1,3 @@
-// calendar.ts
 import { google } from 'googleapis';
 import { Booking } from './types';
 import dayjs from 'dayjs';
@@ -14,28 +13,31 @@ const oAuth2Client = new google.auth.OAuth2(
 
 oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
-export const addEventToCalendar = async (booking: Booking) => {
+export const addEventToCalendar = async (booking: Booking, type: 'wash' | 'fix') => {
   const calendar = google.calendar({ version: 'v3', auth: oAuth2Client });
 
   const dateTimeStart = dayjs(`${booking.date}T${booking.time}`);
   const dateTimeEnd = dateTimeStart.add(30, 'minute');
-
   const formattedDate = dateTimeStart.format('DD.MM.YYYY');
-
   const palveluNimet = booking.services.map(s => s.name).join(', ');
-  const palveluHinta = booking.services
-    .map(s => Number(s.price.replace('€', '').replace(',', '.')))
-    .reduce((sum, price) => sum + price, 0)
-    .toFixed(2)
-    .replace('.', ',');
+
+  const isFix = type === 'fix';
+  const palveluHinta = isFix
+    ? null
+    : booking.services
+        .map(s => Number(s.price.replace('€', '').replace(',', '.')))
+        .reduce((sum, price) => sum + price, 0)
+        .toFixed(2)
+        .replace('.', ',');
 
   const event = {
-    summary: `Pesuvaraus - ${booking.contact.name} ${booking.contact.surname}`,
+    summary: `${isFix ? 'Huoltovaraus' : 'Pesuvaraus'} - ${booking.contact.name} ${booking.contact.surname}`,
     description: `Palvelu(t): ${palveluNimet}
 Päivämäärä: ${formattedDate}
 Aika: ${booking.time}
 Rekisterinumero: ${booking.contact.plate}
-Hinta: ${palveluHinta} €`,
+${isFix && booking.services[0]?.description ? `Ongelma: ${booking.services[0].description}\n` : ''}
+${!isFix ? `Hinta: ${palveluHinta} €` : ''}`,
     start: {
       dateTime: dateTimeStart.toISOString(),
       timeZone: 'Europe/Helsinki',
