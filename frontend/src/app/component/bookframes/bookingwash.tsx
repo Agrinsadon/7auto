@@ -2,11 +2,12 @@ import { useState } from "react";
 import Categorybar from "../bars/categoryBar";
 import BookingReceipt from "../receipt/bookingreceipt";
 import BookingFrame from "./bookingframe";
-import "./bookingwash.css";
 import ServiceBar from "../bars/serviceBar";
 import Calendar from "../calendar/calendar";
 import ContactForm from "../contact/contactform";
 import LastFrame from "./lastframe";
+import SuccessCheckmark from "./completeframe";
+import "./bookingwash.css";
 
 interface Service {
   name: string;
@@ -30,6 +31,7 @@ const BookingWash = ({ goBack, onClose }: BookingWashProps) => {
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [contactInfo, setContactInfo] = useState<any>(null);
   const [activeService, setActiveService] = useState<string | null>(null);
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
   const handleCategorySelect = (category: string | null) => {
     setSelectedCategory(category);
@@ -75,18 +77,18 @@ const BookingWash = ({ goBack, onClose }: BookingWashProps) => {
       time: selectedTime,
       contact: contactInfo,
     };
-  
+
     try {
-      const response = await fetch('http://localhost:4000/api/book/wash', { 
+      const response = await fetch('http://localhost:4000/api/book/wash', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(bookingPayload),
       });
-  
+
       if (response.ok) {
-        alert('Kiitos varauksesta! Saat vahvistuksen sähköpostiin.');
+        setIsConfirmed(true);
       } else {
         alert('Jokin meni pieleen varauksen kanssa. Yritä uudelleen.');
       }
@@ -95,31 +97,33 @@ const BookingWash = ({ goBack, onClose }: BookingWashProps) => {
       alert('Virhe varauksen lähetyksessä.');
     }
   };
-  
 
   const handleBack = () => {
-    if (currentStep === "confirm") setCurrentStep("contact");
-    else if (currentStep === "contact") setCurrentStep("calendar");
+    if (isConfirmed) return;
+    if (currentStep === "contact") setCurrentStep("calendar");
     else if (currentStep === "calendar") setCurrentStep("service");
     else if (currentStep === "service") setCurrentStep("category");
     else goBack();
   };
 
+  const getStepText = () => {
+    if (isConfirmed) return "Kiitos, nähdään pian";
+    switch (currentStep) {
+      case "category": return "Valitse Kategoria";
+      case "service": return "Valitse Palvelu";
+      case "calendar": return "Valitse Päivä & Aika";
+      case "contact": return "Täytä Yhteystiedot";
+      case "confirm": return "Tarkista ja vahvista";
+      default: return "";
+    }
+  };
+
   return (
     <BookingFrame
-      onText={
-        currentStep === "category"
-          ? "Valitse Kategoria"
-          : currentStep === "service"
-          ? "Valitse Palvelu"
-          : currentStep === "calendar"
-          ? "Valitse Päivä & Aika"
-          : currentStep === "contact"
-          ? "Täytä Yhteystiedot"
-          : "Tarkista ja vahvista"
-      }
-      onBack={handleBack}
+      onText={getStepText()}
+      onBack={handleBack}             // ✅ AINA annetaan
       onClose={onClose}
+      disableBack={isConfirmed}       // ✅ Estetään käytettävyys tyylillä
     >
       <div className={`booking-wash-content ${currentStep === "confirm" ? "single-column" : ""}`}>
         <div className="booking-category-side">
@@ -155,6 +159,9 @@ const BookingWash = ({ goBack, onClose }: BookingWashProps) => {
         </div>
 
         {currentStep === "confirm" && selectedDate && selectedTime && contactInfo && (
+          isConfirmed ? (
+            <SuccessCheckmark />
+          ) : (
             <LastFrame
               selectedServices={selectedServices}
               selectedDate={selectedDate}
@@ -162,7 +169,8 @@ const BookingWash = ({ goBack, onClose }: BookingWashProps) => {
               contact={contactInfo}
               onConfirm={handleFinalConfirm}
             />
-          )}
+          )
+        )}
 
         {currentStep !== "confirm" && <div className="booking-separator"></div>}
 

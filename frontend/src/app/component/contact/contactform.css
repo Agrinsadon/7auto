@@ -1,41 +1,52 @@
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-width: 350px;
-    min-width: 350px;
-    margin: 2rem auto;
-    padding: 10px;
-  }
-  
-  .contact-form-row {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .contact-form-row input {
-    flex: 1;
-  }
-  
-  .contact-form input {
-    padding: 10px 12px;
-    border: none;
-    border-bottom: 2px solid #ccc;
-    background: transparent;
-    outline: none;
-    margin-bottom: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-  }
-  
-  .contact-form input:focus,
-  .contact-form input:not(:placeholder-shown) {
-    border-bottom-color: black;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 350px;
+  min-width: 350px;
+  margin: 2rem auto;
+  padding: 10px;
+}
 
-.contact-button {
-    margin: 1rem auto;
-  }
-  
+.contact-form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.contact-form-row input {
+  flex: 1;
+}
+
+.contact-form input {
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background: transparent;
+  outline: none;
+  margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form input:not(:placeholder-shown) {
+  border-bottom-color: black;
+}
+
+/* Wrapper to center button and position error text below */
+.contact-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.error-text {
+  color: red;
+  font-size: 14px;
+  margin-top: 6px;
+  text-align: center;
+  width: 100%;
+}

@@ -19,8 +19,10 @@ const ContactForm = ({ onSubmit, prefill }: ContactFormProps) => {
     surname: '',
     email: '',
     phone: '',
-    plate: '', // 👈 added
+    plate: '',
   });
+
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     if (prefill) {
@@ -29,13 +31,30 @@ const ContactForm = ({ onSubmit, prefill }: ContactFormProps) => {
         surname: prefill.surname ?? '',
         email: prefill.email ?? '',
         phone: prefill.phone ?? '',
-        plate: prefill.plate ?? '', // 👈 added
+        plate: prefill.plate ?? '',
       });
     }
   }, [prefill]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    if (hasError) setHasError(false); // clear error on change
+  };
+
+  const handleSubmit = () => {
+    if (
+      !form.name.trim() ||
+      !form.surname.trim() ||
+      !form.email.trim() ||
+      !form.phone.trim() ||
+      !form.plate.trim()
+    ) {
+      setHasError(true);
+      return;
+    }
+
+    setHasError(false);
+    onSubmit(form);
   };
 
   return (
@@ -76,13 +95,14 @@ const ContactForm = ({ onSubmit, prefill }: ContactFormProps) => {
         onChange={handleChange}
       />
 
-      <div className="contact-button">
+      <div className="contact-button-wrapper">
         <BookButton
-          onClick={() => onSubmit(form)}
+          onClick={handleSubmit}
           onText="Vahvista tiedot"
           variant="light"
           size="small"
         />
+        {hasError && <span className="error-text">Täytä kaikki</span>}
       </div>
     </div>
   );
