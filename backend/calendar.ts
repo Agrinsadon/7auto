@@ -51,6 +51,11 @@ ${!isFix ? `Hinta: ${palveluHinta} €` : ''}`,
         email: booking.contact.email,
       },
     ],
+    extendedProperties: {
+      private: {
+        type,
+      },
+    },
   };
 
   try {
@@ -62,4 +67,28 @@ ${!isFix ? `Hinta: ${palveluHinta} €` : ''}`,
   } catch (error) {
     console.error('❌ Error creating calendar event:', error);
   }
+};
+
+// New function to get calendar events
+export const getCalendarEvents = async () => {
+  const calendar = google.calendar({ version: 'v3', auth: oAuth2Client });
+
+  const now = new Date();
+
+  const response = await calendar.events.list({
+    calendarId: 'primary',
+    timeMin: now.toISOString(),
+    maxResults: 100,
+    singleEvents: true,
+    orderBy: 'startTime',
+  });
+
+  return (response.data.items || []).map(event => ({
+    id: event.id,
+    summary: event.summary,
+    description: event.description,
+    start: event.start?.dateTime,
+    end: event.end?.dateTime,
+    type: event.extendedProperties?.private?.type ?? 'unknown',
+  }));
 };

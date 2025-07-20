@@ -145,6 +145,7 @@ const BookingWash = ({ goBack, onClose }: BookingWashProps) => {
               selectedTime={selectedTime}
               setSelectedDate={setSelectedDate}
               setSelectedTime={setSelectedTime}
+              bookingType="wash"
             />
           )}
 

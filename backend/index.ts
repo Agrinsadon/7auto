@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import { sendBookingEmail } from './mailer';
-import { addEventToCalendar } from './calendar';
+import { addEventToCalendar, getCalendarEvents } from './calendar';
 
 dotenv.config();
 
@@ -33,6 +33,7 @@ app.post('/api/book/wash', async (req, res) => {
   }
 });
 
+// Fix booking endpoint
 app.post('/api/book/fix', async (req, res) => {
   try {
     const booking = req.body;
@@ -45,6 +46,17 @@ app.post('/api/book/fix', async (req, res) => {
   } catch (error) {
     console.error('Fix booking error:', error);
     res.status(500).json({ message: 'Fix booking failed', error });
+  }
+});
+
+// NEW: Fetch calendar events
+app.get('/api/calendar/events', async (req, res) => {
+  try {
+    const events = await getCalendarEvents();
+    res.status(200).json(events);
+  } catch (error) {
+    console.error('Calendar fetch error:', error);
+    res.status(500).json({ message: 'Failed to fetch events', error });
   }
 });
 

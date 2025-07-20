@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './calendar.css';
 
 const weekdays = ['MA', 'TI', 'KE', 'TO', 'PE', 'LA', 'SU'];
@@ -9,6 +9,12 @@ interface CalendarProps {
   selectedTime: string | null;
   setSelectedDate: React.Dispatch<React.SetStateAction<Date | null>>;
   setSelectedTime: React.Dispatch<React.SetStateAction<string | null>>;
+  bookingType: 'wash' | 'fix';
+}
+
+interface CalendarEvent {
+  start: string;
+  type: string;
 }
 
 const Calendar = ({
@@ -17,13 +23,44 @@ const Calendar = ({
   selectedTime,
   setSelectedDate,
   setSelectedTime,
+  bookingType,
 }: CalendarProps) => {
-  const [currentDate, setCurrentDate] = React.useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [bookedSlots, setBookedSlots] = useState<{ [key: string]: string[] }>({});
 
   const today = new Date();
   const minBookDate = new Date(today);
   minBookDate.setHours(0, 0, 0, 0);
   minBookDate.setDate(minBookDate.getDate() + 14);
+
+  // Fetch booked calendar events
+  useEffect(() => {
+    const fetchBookedEvents = async () => {
+      try {
+        const res = await fetch('http://localhost:4000/api/calendar/events');
+        const data: CalendarEvent[] = await res.json();
+
+        const slotsByDate: { [key: string]: string[] } = {};
+
+        data.forEach(event => {
+          if (event.type !== bookingType) return;
+
+          const dateTime = new Date(event.start);
+          const dateKey = dateTime.toISOString().split('T')[0];
+          const time = dateTime.toTimeString().slice(0, 5); // HH:mm
+
+          if (!slotsByDate[dateKey]) slotsByDate[dateKey] = [];
+          slotsByDate[dateKey].push(time);
+        });
+
+        setBookedSlots(slotsByDate);
+      } catch (err) {
+        console.error('Failed to fetch calendar events:', err);
+      }
+    };
+
+    fetchBookedEvents();
+  }, [bookingType]);
 
   useEffect(() => {
     if (!selectedDate || selectedDate < minBookDate) {
@@ -70,6 +107,12 @@ const Calendar = ({
       setSelectedTime(slot);
       onDateTimeSelected(selectedDate, slot);
     }
+  };
+
+  const isTimeDisabled = (time: string): boolean => {
+    if (!selectedDate) return false;
+    const dateKey = selectedDate.toISOString().split('T')[0];
+    return bookedSlots[dateKey]?.includes(time) ?? false;
   };
 
   return (
@@ -127,18 +170,24 @@ const Calendar = ({
 
       {selectedDate && (
         <div className="timeslot-grid">
-          {generateTimeSlots().map(slot => (
-            <div className="timeslot-container" key={slot}>
-              <div
-                className={`timeslot ${selectedTime === slot ? 'selected-slot' : ''}`}
-                data-time={slot}
-                onClick={() => handleTimeSelect(slot)}
-              />
-              {slot.endsWith(':00') && (
-                <div className="timeslot-label">{slot}</div>
-              )}
-            </div>
-          ))}
+          {generateTimeSlots().map(slot => {
+            const isDisabled = isTimeDisabled(slot);
+
+            return (
+              <div className="timeslot-container" key={slot}>
+                <div
+                  className={`timeslot ${selectedTime === slot ? 'selected-slot' : ''} ${
+                    isDisabled ? 'disabled-slot' : ''
+                  }`}
+                  data-time={slot}
+                  onClick={() => !isDisabled && handleTimeSelect(slot)}
+                />
+                {slot.endsWith(':00') && (
+                  <div className="timeslot-label">{slot}</div>
+                )}
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

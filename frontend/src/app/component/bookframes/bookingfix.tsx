@@ -89,6 +89,7 @@ const BookingFix = ({ goBack, onClose, initialDescription }: BookingFixFlowProps
             selectedTime={selectedTime}
             setSelectedDate={setSelectedDate}
             setSelectedTime={setSelectedTime}
+            bookingType="fix"
           />
         )}
         
