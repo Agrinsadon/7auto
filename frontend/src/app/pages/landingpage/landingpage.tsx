@@ -1,9 +1,20 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import './landingpage.css';
-import BookButton from '../../component/buttons/bookbutton'; // Adjust path if necessary
+import BookButton from '../../component/buttons/bookbutton'; 
+import BookingWash from '@/app/component/reservation-side/bookframes/bookingwash';
+import BookingFixStart from '@/app/component/reservation-side/bookframes/bookingfixstart';
 
 const LandingPage = () => {
+  const [isBookingWashOpen, setIsBookingWashOpen] = useState(false);
+  const [isBookingFixOpen, setIsBookingFixOpen] = useState(false);
+
+  const handleCloseWash = () => setIsBookingWashOpen(false);
+  const handleCloseFix = () => setIsBookingFixOpen(false);
+
+  const handleOpenWash = () => setIsBookingWashOpen(true);
+  const handleOpenFix = () => setIsBookingFixOpen(true);
+
   return (
     <div className="image-frame">
       <img
@@ -13,19 +24,32 @@ const LandingPage = () => {
       />
       <div className="button-overlay">
         <BookButton
-          onClick={() => console.log("Varaa huolto clicked")}
+          onClick={handleOpenFix}
           onText="Varaa huolto"
-          variant='light-stay'
-          size='large'
-
+          variant="light-stay"
+          size="large"
         />
         <BookButton
-          onClick={() => console.log("Varaa pesu clicked")}
+          onClick={handleOpenWash}
           onText="Varaa pesu"
-          variant='dark-stay'
-          size='large'
+          variant="dark-stay"
+          size="large"
         />
       </div>
+
+      {isBookingWashOpen && (
+        <BookingWash
+          onClose={handleCloseWash}
+          goBack={handleCloseWash}
+        />
+      )}
+
+      {isBookingFixOpen && (
+        <BookingFixStart
+          onClose={handleCloseFix}
+          goBack={handleCloseFix}
+        />
+      )}
     </div>
   );
 };
