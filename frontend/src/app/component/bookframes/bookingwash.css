@@ -32,3 +32,15 @@
 .booking-wash-content.single-column .booking-receipt-side {
     display: none;
 }
+
+@media (max-width: 760px) {
+    .booking-wash-content {
+      display: block;
+    }
+  
+    .booking-wash-content .booking-separator,
+    .booking-wash-content .booking-receipt-side {
+      display: none;
+    }
+  }
+  

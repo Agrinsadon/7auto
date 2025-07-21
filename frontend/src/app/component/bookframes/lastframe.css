@@ -46,3 +46,26 @@
     width: 60%;
   }
   
+
+  @media (max-width: 760px) {
+    
+  .bottom-section {
+    display: block;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+
+  .bottom-text {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .last-button{
+    width: 100%;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  }

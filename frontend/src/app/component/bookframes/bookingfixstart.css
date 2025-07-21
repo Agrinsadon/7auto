@@ -23,4 +23,16 @@
   .booking-fixstart-button {
     align-self: flex-end;
   }
+
+
+  @media (max-width: 760px) {
+    .booking-fixstart-container {
+      padding: 1rem;
+    }
+    
+    .booking-fixstart-button {
+      margin: 0 auto;
+    }
+  }
+  
   

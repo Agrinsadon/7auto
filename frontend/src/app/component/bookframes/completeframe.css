@@ -90,4 +90,11 @@
       opacity: 1;
     }
   }
+
+  @media (max-width: 760px) {
+    .success-container {
+      height: 85%;
+    }
+  }
+  
   

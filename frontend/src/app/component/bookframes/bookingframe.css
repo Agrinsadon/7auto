@@ -91,3 +91,23 @@
     font-size: 14px;
     color: #333;
   }
+
+  @media (max-width: 760px) {
+    
+    .booking-frame {
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      height: 100%;
+      border-radius: 0;
+      width: 100%;
+    }
+  
+    .booking-frame-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20;
+      border-bottom: 1px solid #e5e7ee;
+    }
+  }
+  
