@@ -6,17 +6,17 @@ const category = [
   {
     name: "PESUPALVELUT",
     amount: "3 palvelua",
-    img: "/isam.png",
+    img: "/carwash.png",
   },
   {
     name: "VAHAUS & KIILTO",
     amount: "3 palvelua",
-    img: "/isam.png",
+    img: "/carwash.png",
   },
   {
     name: "RENGASPALVELUT",
     amount: "4 palvelua",
-    img: "/isam.png",
+    img: "/carwash.png",
   },
 ];
 

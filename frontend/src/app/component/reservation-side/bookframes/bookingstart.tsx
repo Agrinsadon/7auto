@@ -2,7 +2,7 @@
 import BookingFrame from './bookingframe';
 import BookingWash from './bookingwash';
 import BookingFix from './bookingfixstart'; // ✅ Import your new BookingFix
-import BookButton from '../buttons/bookbutton';
+import BookButton from '../../buttons/bookbutton';
 import React, { useState } from 'react';
 import Image from 'next/image';
 import './bookingstart.css';

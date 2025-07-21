@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import BookingFrame from './bookingframe';
 import BookingFixFlow from './bookingfix';
-import BookButton from '../buttons/bookbutton';
+import BookButton from '../../buttons/bookbutton';
 import './bookingfixstart.css';
 
 interface BookingFixStartProps {

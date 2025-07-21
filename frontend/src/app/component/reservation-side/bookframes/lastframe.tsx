@@ -1,4 +1,4 @@
-import BookButton from '../buttons/bookbutton';
+import BookButton from '../../buttons/bookbutton';
 import './lastframe.css';
 
 interface Service {

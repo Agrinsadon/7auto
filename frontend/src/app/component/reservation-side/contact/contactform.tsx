@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './contactform.css';
-import BookButton from '../buttons/bookbutton';
+import BookButton from '../../buttons/bookbutton';
 
 interface ContactFormProps {
   onSubmit: (formData: any) => void;

@@ -1,5 +1,5 @@
 import './bookingframe.css';
-import RemoveButton from '../buttons/removebutton';
+import RemoveButton from '../../buttons/removebutton';
 
 interface BookingFrameProps {
   onText?: string;
