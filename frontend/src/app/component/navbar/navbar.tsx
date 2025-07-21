@@ -22,19 +22,20 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className='navbarlinks'>
-              <Link href="/huolto" className='navlink'>Huolto</Link>
-              <Link href="/pesu" className='navlink'>Pesu</Link>
-              <Link href="/yhteystiedot" className='navlink'>Yhteystiedot</Link>
-            </div>
+            <div className='navright'>
+              <div className='navbarlinks'>
+                <Link href="/huolto" className='navlink'>Huolto</Link>
+                <Link href="/pesu" className='navlink'>Pesu</Link>
+                <Link href="/yhteystiedot" className='navlink'>Yhteystiedot</Link>
+              </div>
 
-            <div className='navbarcta'>
-              <BookButton
-                onClick={handleClick}
-                onText="Varaa aika"
-                variant="light"
-
-              />
+              <div className='navbarcta'>
+                <BookButton
+                  onClick={handleClick}
+                  onText="Varaa aika"
+                  variant="light"
+                />
+              </div>
             </div>
           </div>
         </nav>
