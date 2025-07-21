@@ -1,0 +1,26 @@
+
+.image-frame {
+    position: relative;
+    margin-top: 5rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.image-size {
+    margin: 0 auto;
+    width: 95%;
+    height: auto;
+}
+
+.button-overlay {
+    position: absolute;
+    bottom: 8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8rem;
+    z-index: 2;
+}
+
+  

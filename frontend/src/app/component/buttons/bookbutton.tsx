@@ -4,8 +4,8 @@ import "./bookbutton.css";
 interface BookButtonProps {
   onClick: () => void;
   onText?: string;
-  variant?: "light" | "dark";
-  size?: "small" | "large"; // default is medium (no class needed)
+  variant?: "light" | "dark" | "light-stay" | "dark-stay";
+  size?: "small" | "large";
 }
 
 export default function BookButton({
@@ -14,7 +14,7 @@ export default function BookButton({
   variant = "dark",
   size,
 }: BookButtonProps) {
-  const sizeClass = size ? size : ""; // only apply size class if set
+  const sizeClass = size ? size : "";
 
   return (
     <button className={`book-button ${variant} ${sizeClass}`} onClick={onClick}>
