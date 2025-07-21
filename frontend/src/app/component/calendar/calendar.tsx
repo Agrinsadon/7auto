@@ -46,8 +46,10 @@ const Calendar = ({
           if (event.type !== bookingType) return;
 
           const dateTime = new Date(event.start);
-          const dateKey = dateTime.toISOString().split('T')[0];
-          const time = dateTime.toTimeString().slice(0, 5); // HH:mm
+          // Convert to local timezone for display
+          const localDate = new Date(dateTime.getTime() + dateTime.getTimezoneOffset() * 60000);
+          const dateKey = localDate.toISOString().split('T')[0];
+          const time = localDate.toTimeString().slice(0, 5); // HH:mm
 
           if (!slotsByDate[dateKey]) slotsByDate[dateKey] = [];
           slotsByDate[dateKey].push(time);
@@ -104,14 +106,29 @@ const Calendar = ({
 
   const handleTimeSelect = (slot: string) => {
     if (selectedDate) {
+      // Create date with time in local timezone
+      const [hours, minutes] = slot.split(':').map(Number);
+      const dateWithTime = new Date(
+        selectedDate.getFullYear(),
+        selectedDate.getMonth(),
+        selectedDate.getDate(),
+        hours,
+        minutes
+      );
+      
       setSelectedTime(slot);
-      onDateTimeSelected(selectedDate, slot);
+      onDateTimeSelected(dateWithTime, slot);
     }
   };
 
   const isTimeDisabled = (time: string): boolean => {
     if (!selectedDate) return false;
-    const dateKey = selectedDate.toISOString().split('T')[0];
+    // Use local date string for comparison
+    const dateKey = new Date(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      selectedDate.getDate()
+    ).toISOString().split('T')[0];
     return bookedSlots[dateKey]?.includes(time) ?? false;
   };
 

@@ -1,9 +1,14 @@
 import { google } from 'googleapis';
 import { Booking } from './types';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 import dotenv from 'dotenv';
 
 dotenv.config();
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 const oAuth2Client = new google.auth.OAuth2(
   process.env.CLIENT_ID,
@@ -16,7 +21,8 @@ oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 export const addEventToCalendar = async (booking: Booking, type: 'wash' | 'fix') => {
   const calendar = google.calendar({ version: 'v3', auth: oAuth2Client });
 
-  const dateTimeStart = dayjs(`${booking.date}T${booking.time}`);
+  // Parse date with explicit Helsinki timezone
+  const dateTimeStart = dayjs.tz(`${booking.date}T${booking.time}`, 'Europe/Helsinki');
   const dateTimeEnd = dateTimeStart.add(30, 'minute');
   const formattedDate = dateTimeStart.format('DD.MM.YYYY');
   const palveluNimet = booking.services.map(s => s.name).join(', ');
@@ -69,18 +75,18 @@ ${!isFix ? `Hinta: ${palveluHinta} €` : ''}`,
   }
 };
 
-// New function to get calendar events
 export const getCalendarEvents = async () => {
   const calendar = google.calendar({ version: 'v3', auth: oAuth2Client });
 
-  const now = new Date();
+  const now = dayjs().tz('Europe/Helsinki').toISOString();
 
   const response = await calendar.events.list({
     calendarId: 'primary',
-    timeMin: now.toISOString(),
+    timeMin: now,
     maxResults: 100,
     singleEvents: true,
     orderBy: 'startTime',
+    timeZone: 'Europe/Helsinki'
   });
 
   return (response.data.items || []).map(event => ({
