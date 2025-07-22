@@ -12,7 +12,7 @@ const images = [
 
 const ImageGrid = () => {
   return (
-    <div className='container'>
+    <div className='imagepage-container'>
       {images.map((img, i) => (
         <div className='imageSlot' key={`slot-${i}-${img.default}`}>
           <Image

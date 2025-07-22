@@ -58,8 +58,8 @@ const ContactForm = ({ onSubmit, prefill }: ContactFormProps) => {
   };
 
   return (
-    <div className="contact-form">
-      <div className="contact-form-row">
+    <div className="booking-contact-form">
+      <div className="booking-contact-form-row">
         <input
           name="name"
           placeholder="Etunimi*"
@@ -95,14 +95,14 @@ const ContactForm = ({ onSubmit, prefill }: ContactFormProps) => {
         onChange={handleChange}
       />
 
-      <div className="contact-button-wrapper">
+      <div className="booking-contact-button-wrapper">
         <BookButton
           onClick={handleSubmit}
           onText="Vahvista tiedot"
           variant="light"
           size="small"
         />
-        {hasError && <span className="error-text">Täytä kaikki</span>}
+        {hasError && <span className="booking-error-text">Täytä kaikki</span>}
       </div>
     </div>
   );
