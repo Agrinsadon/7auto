@@ -1,0 +1,79 @@
+.service-container {
+    margin-top: 7rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    min-width: 85%;
+    height: 50vh;
+}
+
+.carwash-header {
+    margin-bottom: 1rem;
+}
+
+.tab-menu {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
+}
+
+.tab {
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s ease;
+    color: #555;
+}
+
+.tab:hover {
+    color: #000;
+    border-bottom: 2px solid #000;
+    transition: border-bottom 0.3s ease;
+}
+
+.tab.active {
+    border-bottom: 2px solid #000;
+    color: #000;
+    transition: opacity 0.3s ease;
+}
+
+.tab-content {
+    position: relative;
+}
+
+.carfix-content {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 1s ease-in-out;
+    width: 100%;
+}
+
+.carfix-content.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-in-out;
+    position: relative;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.info-text {
+    flex: 1;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+}
+
+.info-image {
+    border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+}
