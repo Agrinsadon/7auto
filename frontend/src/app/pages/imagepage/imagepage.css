@@ -1,0 +1,46 @@
+.container {
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    padding: 2rem;
+  }
+  
+  .imageSlot {
+    position: relative;
+    width: 150px;
+    height: 200px;
+    background-color: white;
+    overflow: hidden;
+  }
+  
+  .image {
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+  }
+  
+  .defaultImage {
+    z-index: 1;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .hoverImage {
+    z-index: 2;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .imageSlot:hover .hoverImage {
+    opacity: 1;
+  }
+  
+  .imageSlot:hover .defaultImage {
+    opacity: 0;
+  }
+  
