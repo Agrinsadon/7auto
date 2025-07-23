@@ -47,10 +47,9 @@
   .booking-frame-header {
     display: flex;
     justify-content: space-between;
-    padding: 20;
+    padding: 20px;
     border-bottom: 1px solid #e5e7ee;
   }
-
 
   .booking-frame-footer {
     display: flex;
