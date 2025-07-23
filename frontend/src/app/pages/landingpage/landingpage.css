@@ -23,10 +23,29 @@
     z-index: 2;
 }
 
-.under-text {
-    font-size: 35px;
+.landing-text-frame {
+    display: block;
     margin-top: 7rem;
     margin-bottom: 7rem;
     max-width: 75%;
     margin-left: 3rem;
 }
+
+.under-text {
+    font-size: 35px;
+    margin-bottom: 2rem;
+}
+
+.booking-link {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 4px;
+  }
+  
+  .booking-link:hover {
+    transform: translateX(5px);
+    transition: transform 0.5s ease;
+  }
+  
