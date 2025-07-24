@@ -38,7 +38,7 @@ const ContactForm = ({ onSubmit, prefill }: ContactFormProps) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    if (hasError) setHasError(false); // clear error on change
+    if (hasError) setHasError(false);
   };
 
   const handleSubmit = () => {
@@ -60,40 +60,60 @@ const ContactForm = ({ onSubmit, prefill }: ContactFormProps) => {
   return (
     <div className="booking-contact-form">
       <div className="booking-contact-form-row">
-        <input
-          name="name"
-          placeholder="Etunimi*"
-          value={form.name}
-          onChange={handleChange}
-        />
-        <input
-          name="surname"
-          placeholder="Sukunimi*"
-          value={form.surname}
-          onChange={handleChange}
-        />
+        <div className={`floating-label ${form.name ? 'active' : ''}`}>
+          <input
+            name="name"
+            id="name"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="name">Etunimi*</label>
+        </div>
+        <div className={`floating-label ${form.surname ? 'active' : ''}`}>
+          <input
+            name="surname"
+            id="surname"
+            value={form.surname}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="surname">Sukunimi*</label>
+        </div>
       </div>
 
-      <input
-        name="email"
-        placeholder="Sähköposti*"
-        value={form.email}
-        onChange={handleChange}
-      />
+      <div className={`floating-label ${form.email ? 'active' : ''}`}>
+        <input
+          name="email"
+          id="email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="email">Sähköposti*</label>
+      </div>
 
-      <input
-        name="phone"
-        placeholder="Puhelinnumero*"
-        value={form.phone}
-        onChange={handleChange}
-      />
+      <div className={`floating-label ${form.phone ? 'active' : ''}`}>
+        <input
+          name="phone"
+          id="phone"
+          value={form.phone}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="phone">Puhelinnumero*</label>
+      </div>
 
-      <input
-        name="plate"
-        placeholder="Rekisterinumero*"
-        value={form.plate}
-        onChange={handleChange}
-      />
+      <div className={`floating-label ${form.plate ? 'active' : ''}`}>
+        <input
+          name="plate"
+          id="plate"
+          value={form.plate}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="plate">Rekisterinumero*</label>
+      </div>
 
       <div className="booking-contact-button-wrapper">
         <BookButton

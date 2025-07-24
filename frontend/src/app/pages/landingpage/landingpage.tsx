@@ -66,7 +66,7 @@ const LandingPage = () => {
 
     </div>
     <div className="landing-text-frame">
-    <p className='under-text'>Tarjoamme huollot ja pesut kätevästi saman katon alta. Olipa kyse öljynvaihdosta, jarrujen tarkistuksesta tai perusteellisesta sisä- ja ulkopesusta, hoidamme kaiken luotettavasti yhdestä osoitteesta. Käytämme laadukkaita tuotteita ja nykyaikaisia menetelmiä, jotta autosi on parhaassa mahdollisessa kunnossa sekä sisältä että ulkoa.</p>
+    <p className='under-text'>Tarjoamme huollot ja pesut kätevästi saman katon alta. Olipa kyse öljynvaihdosta, jarrujen tarkistuksesta tai perusteellisesta sisä- ja ulkopesusta, hoidamme kaiken luotettavasti yhdestä osoitteesta. <br/><br/>  Käytämme laadukkaita tuotteita ja nykyaikaisia menetelmiä, jotta autosi on parhaassa mahdollisessa kunnossa sekä sisältä että ulkoa.</p>
     <p 
       className="booking-link" 
       onClick={handleOpenServices}

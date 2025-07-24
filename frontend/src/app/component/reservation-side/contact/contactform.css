@@ -4,7 +4,7 @@
   gap: 16px;
   max-width: 350px;
   min-width: 350px;
-  margin: 2rem auto;
+  margin: 1rem auto;
   padding: 10px;
 }
 
@@ -13,34 +13,54 @@
   gap: 20px;
 }
 
-.booking-contact-form-row input {
+.booking-contact-form-row .floating-label {
   flex: 1;
 }
 
-.booking-contact-form input {
-  padding: 10px 12px;
+.floating-label {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.floating-label input {
+  width: 100%;
+  padding: 12px 12px;
   border: none;
   border-bottom: 2px solid #ccc;
   background: transparent;
   outline: none;
-  margin-bottom: 1rem;
-  width: 100%;
+  font-size: 14px;
   box-sizing: border-box;
-  transition: border-color 0.2s;
 }
 
-.booking-contact-form input:focus,
-.booking-contact-form input:not(:placeholder-shown) {
-  border-bottom-color: black;
+.floating-label label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  color: #999;
+  font-size: 14px;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  background: white;
+  padding: 0 4px;
 }
 
-/* Wrapper to center button and position error text below */
+.floating-label.active input {
+  border-bottom: 2px solid #000;
+}
+
+.floating-label.active label {
+  top: -8px;
+  left: 8px;
+  font-size: 12px;
+  color: #000;
+}
+
 .booking-contact-button-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: 1rem;
 }
 
 .booking-error-text {
