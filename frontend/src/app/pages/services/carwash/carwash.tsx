@@ -6,7 +6,7 @@ const Carwash = () => {
     const [activeTab, setActiveTab] = useState('tiedot');
 
     return (
-        <div className="service-container">
+        <div className="carwash-service-container">
             <div className="carwash-header">
                 <h1>Autonpesu 7autossa</h1>
                 <div className="tab-menu">
@@ -26,7 +26,7 @@ const Carwash = () => {
             </div>
 
             <div className="tab-content">
-                <div className={`carfix-content ${activeTab === 'tiedot' ? 'visible' : 'hidden'}`}>
+                <div className={`carwash-content ${activeTab === 'tiedot' ? 'visible' : 'hidden'}`}>
                     <div className="info-content">
                         <div className="info-text">
                             <p>
@@ -45,8 +45,31 @@ const Carwash = () => {
                     </div>
                 </div>
 
-                <div className={`carfix-content ${activeTab === 'hinnat' ? 'visible' : 'hidden'}`}>
-                    <p>Hinnasto tulossa pian! (Pricing coming soon!)</p>
+                <div className={`carwash-content ${activeTab === 'hinnat' ? 'visible' : 'hidden'}`}>
+                <div className="services-grid">
+                <div className="row">
+                    <div className="cell">PESUPALVELUT</div>
+                    <div className="cell-underline"></div>
+                    <div className="cell">Käsipesu - 10.00 €</div>
+                    <div className="cell">Sisäpesu - 10.00 €</div>
+                    <div className="cell">Käsi + sisäpesu - 10.00 €</div>
+                </div>
+                <div className="row">
+                    <div className="cell">VAHAUS & KIILTO</div>
+                    <div className="cell-underline"></div>
+                    <div className="cell">Normaali vahaus - 10.00 €</div>
+                    <div className="cell">Kova vahaus - 10.00 €</div>
+                    <div className="cell">Keraaminen NANO vahaus - 10.00 €</div>
+                </div>
+                <div className="row">
+                    <div className="cell">RENGASPALVELUT</div>
+                    <div className="cell-underline"></div>
+                    <div className="cell">Renkaiden vaihto (henkilöauto) - 10.00 €</div>
+                    <div className="cell">Renkaiden vaihto (pakettiauto) - 10.00 €</div>
+                    <div className="cell">Renkaiden pesu - 10.00 €</div>
+                    <div className="cell">Renkaiden tasapainotus - 10.00 €</div>
+                </div>
+                </div>
                 </div>
             </div>
         </div>

@@ -1,9 +1,9 @@
-.service-container {
+.carwash-service-container {
     margin-top: 7rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
-    min-width: 85%;
-    height: 50vh;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-bottom: 7rem;
+    height: 57vh;
 }
 
 .carwash-header {
@@ -40,7 +40,7 @@
     position: relative;
 }
 
-.carfix-content {
+.carwash-content {
     opacity: 0;
     visibility: hidden;
     position: absolute;
@@ -50,7 +50,7 @@
     width: 100%;
 }
 
-.carfix-content.visible {
+.carwash-content.visible {
     opacity: 1;
     visibility: visible;
     transition: opacity 1s ease-in-out;
@@ -67,13 +67,35 @@
 
 .info-text {
     flex: 1;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     line-height: 1.6;
 }
 
 .info-image {
     border-radius: 20px;
 }
+
+.services-grid {
+    display: flex;
+    gap: 80px;
+  }
+  
+  .row {
+    display: block;
+  }
+  
+  .cell {
+    flex: 1;
+    min-width: 150px;
+    border-radius: 8px;
+    text-align: left;
+    line-height: 1.8;
+    padding: 15px 5px 5px 0;
+  }
+  
+  .cell-underline {
+    border-bottom: 1px solid #ccc;
+  }
 
 @media (max-width: 768px) {
 }

@@ -1,5 +1,19 @@
-.service-container {
+.carfix-service-container {
     display: block;
-    margin-left: 3rem;
-    width: 80%;
+    background-color: black;
+    color: white;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    height: 65vh;
+}
+
+.carfix-header {
+    padding-top: 7rem;
+    margin-bottom: 1rem;
+}
+
+.carfix-content{
+    margin-top: 0.5rem;
+    line-height: 1.6;
+    flex: 1;
 }

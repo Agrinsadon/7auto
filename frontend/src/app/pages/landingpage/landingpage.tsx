@@ -14,7 +14,7 @@ const LandingPage = () => {
   const handleCloseWash = () => setIsBookingWashOpen(false);
   const handleCloseFix = () => setIsBookingFixOpen(false);
 
-  const handleCloseServices = () => setIsBookingServicesOpen(false); // uusi sulkufunktio
+  const handleCloseServices = () => setIsBookingServicesOpen(false);
 
   const handleOpenWash = () => setIsBookingWashOpen(true);
   const handleOpenFix = () => setIsBookingFixOpen(true);
