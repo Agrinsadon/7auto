@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./component/navbar/navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const nunitoSans = Nunito_Sans({
+  variable: "--font-nunito-sans",
   subsets: ["latin"],
 });
 
@@ -28,11 +23,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/isam.png" sizes="32x32" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={nunitoSans.variable}>
         <Navbar />
-        <main className="pt-[80px]">
-          {children}
-        </main>
+        <main className="pt-[80px]">{children}</main>
       </body>
     </html>
   );
