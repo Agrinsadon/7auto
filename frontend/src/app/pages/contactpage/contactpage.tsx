@@ -1,27 +1,122 @@
-import React from 'react';
+import { useState } from 'react';
+import { MapPin, Phone, Mail } from 'lucide-react';
+import '../../component/reservation-side/contact/contactform.css';
 import './contactpage.css';
+import BookButton from '../../component/buttons/bookbutton';
 
-const Contact: React.FC = () => {
+interface SimpleContactFormProps {
+  onSubmit: (formData: { name: string; email: string; message: string }) => void;
+  prefill?: {
+    name?: string;
+    email?: string;
+    message?: string;
+  };
+}
+
+const SimpleContactForm = ({ onSubmit, prefill }: SimpleContactFormProps) => {
+  const [form, setForm] = useState({
+    name: prefill?.name ?? '',
+    email: prefill?.email ?? '',
+    message: prefill?.message ?? '',
+  });
+
+  const [hasError, setHasError] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    if (hasError) setHasError(false);
+  };
+
+  const handleSubmit = () => {
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setHasError(true);
+      return;
+    }
+
+    setHasError(false);
+    onSubmit(form);
+  };
+
   return (
-    <div className="contact-container">
-      <h1 className="contact-heading">Ota meihin yhteyttä</h1>
-      <form className="form">
-        <div className="booking-contact-form">
-          <input className="input" type="text" id="name" name="name" placeholder='Nimi*'required />
-        </div>
+    <div className="contact-form-container">
+      <div className="contact-form-header">
+      <h2>Ota meihin yhteyttä</h2>
+      <div className="contact-form-description">
+        <p>Autamme mielellämme kaikissa huoltoon ja pesuun liittyvissä kysymyksissä. Voit myös antaa palautetta lomakkeella. Vastaamme mahdollisimman nopeasti, usein jo saman päivän aikana.</p>
+      </div>
 
-        <div className="booking-contact-form">
-          <input className="input" type="email" id="email" name="email" placeholder='Sähköposti*' required />
+      <div className='contact-form-line'></div>
+      <div className="contact-form-info">
+        <div className="contact-info-item">
+          <MapPin size={20} />
+          <a
+            href="https://www.google.com/maps?q=Esimerkkikatu+1,+00100+Helsinki"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Esimerkkikatu 1, 00100 Helsinki
+          </a>
         </div>
-
-        <div className="booking-contact-form">
-          <input className="input" id="message" name="message" placeholder='Viesti*' required></input>
+        <div className="contact-info-item">
+          <Phone size={20} />
+          <a href="tel:+358401234567">+358 40 123 4567</a>
         </div>
+        <div className="contact-info-item">
+          <Mail size={20} />
+          <a href="mailto:info@esimerkki.fi">info@esimerkki.fi</a>
+        </div>
+      </div>
 
-        <button className="button" type="submit">Send Message</button>
-      </form>
+
+      </div>
+    <div className="contact-form">
+      <div className="booking-contact-form-row">
+        <div className={`floating-label ${form.name ? 'active' : ''}`}>
+          <input
+            name="name"
+            id="name"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="name">Nimi*</label>
+        </div>
+      </div>
+
+      <div className={`floating-label ${form.email ? 'active' : ''}`}>
+        <input
+          name="email"
+          id="email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="email">Sähköposti*</label>
+      </div>
+
+      <div className={`floating-label ${form.message ? 'active' : ''}`}>
+        <input
+          name="message"
+          id="message"
+          value={form.message}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="message">Viesti*</label>
+      </div>
+
+      <div className="booking-contact-button-wrapper">
+        <BookButton
+          onClick={handleSubmit}
+          onText="lähetä viesti"
+          variant="light"
+          size="small"
+        />
+        {hasError && <span className="booking-error-text">Täytä kaikki kentät</span>}
+      </div>
+    </div>
     </div>
   );
 };
 
-export default Contact;
+export default SimpleContactForm;
