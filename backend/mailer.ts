@@ -11,6 +11,31 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+export const sendContactEmail = async ({
+  name,
+  email,
+  message,
+}: {
+  name: string;
+  email: string;
+  message: string;
+}) => {
+  const mailOptions = {
+    from: process.env.GMAIL_USER,
+    to: process.env.RECEIVER_EMAIL,
+    subject: 'Uusi yhteydenottopyyntö',
+    html: `
+      <h2>Uusi viesti verkkosivustolta</h2>
+      <p><strong>Nimi:</strong> ${name}</p>
+      <p><strong>Sähköposti:</strong> ${email}</p>
+      <p><strong>Viesti:</strong><br />${message}</p>
+    `,
+  };
+
+  await transporter.sendMail(mailOptions);
+};
+
+
 export const sendBookingEmail = async (booking: Booking, type: 'wash' | 'fix') => {
   const palveluNimet = booking.services.map(s => s.name).join(', ');
   const isFixService = type === 'fix';
@@ -61,6 +86,8 @@ export const sendBookingEmail = async (booking: Booking, type: 'wash' | 'fix') =
     `,
   };
 
+  
+
   await transporter.sendMail(mailOptionsToBusiness);
 
   // Email to customer
@@ -97,6 +124,8 @@ export const sendBookingEmail = async (booking: Booking, type: 'wash' | 'fix') =
       <p style="font-size: 13px; color: #888;">Tämä on automaattinen viesti — älä vastaa tähän sähköpostiin.</p>
     `,
   };
+
+  
 
   await transporter.sendMail(mailOptionsToCustomer);
 };

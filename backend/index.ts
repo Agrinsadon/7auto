@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import { sendBookingEmail } from './mailer';
+import { sendBookingEmail, sendContactEmail } from './mailer';
 import { addEventToCalendar, getCalendarEvents } from './calendar';
 
 dotenv.config();
@@ -59,6 +59,22 @@ app.get('/api/calendar/events', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch events', error });
   }
 });
+
+// Contact message endpoint
+app.post('/api/contact', async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+    console.log('📩 New contact message received:', { name, email, message });
+
+    await sendContactEmail({ name, email, message });
+
+    res.status(200).json({ message: 'Contact message sent successfully' });
+  } catch (error) {
+    console.error('Contact message error:', error);
+    res.status(500).json({ message: 'Failed to send contact message', error });
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
