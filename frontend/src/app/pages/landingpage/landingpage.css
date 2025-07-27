@@ -48,4 +48,59 @@
     transform: translateX(5px);
     transition: transform 0.5s ease;
   }
+
+@media (max-width: 760px) {
+
+.image-frame {
+    position: relative;
+    margin-top: 4rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.image-size {
+    margin: 0 auto;
+    min-width: 550px;
+    height: 280px;
+}
+
+.button-overlay {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4rem;
+    z-index: 2;
+}
+
+.landing-text-frame {
+    display: block;
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+    max-width: 75%;
+    margin-left: 3rem;
+}
+
+.under-text {
+    font-size: 35px;
+    margin-bottom: 2rem;
+}
+
+.booking-link {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 4px;
+  }
+  
+  .booking-link:hover {
+    transform: translateX(5px);
+    transition: transform 0.5s ease;
+  }
+
+  }
+
   
