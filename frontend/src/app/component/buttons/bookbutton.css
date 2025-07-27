@@ -85,7 +85,7 @@
 
 @media (max-width: 760px) {
   .book-button.large{
-    padding: 8px 15px;
-    font-size: 11px;
+    padding: 12px 18px;
+    font-size: 14px;
   }
 }

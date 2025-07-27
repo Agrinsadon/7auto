@@ -2,14 +2,17 @@
 .image-frame {
     position: relative;
     margin-top: 5rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
     justify-content: center;
+    height: 750px;
     align-items: center;
     display: flex;
 }
 
 .image-size {
     margin: 0 auto;
-    width: 95%;
+    width: 100%;
     height: auto;
 }
 
@@ -25,8 +28,8 @@
 
 .landing-text-frame {
     display: block;
-    margin-top: 7rem;
-    margin-bottom: 7rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
     max-width: 75%;
     margin-left: 3rem;
 }
@@ -51,56 +54,32 @@
 
 @media (max-width: 760px) {
 
-.image-frame {
-    position: relative;
-    margin-top: 4rem;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
 
-.image-size {
-    margin: 0 auto;
-    min-width: 550px;
-    height: 280px;
+.image-frame {
+    margin-top: 4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    height: 550px;
 }
 
 .button-overlay {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 4rem;
-    z-index: 2;
+    bottom: 5rem;
+    gap: 3.5rem;
 }
 
 .landing-text-frame {
     display: block;
-    margin-top: 7rem;
-    margin-bottom: 7rem;
-    max-width: 75%;
-    margin-left: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    margin-right: 0.5rem;
+    margin-left: 0.8rem;
 }
 
 .under-text {
-    font-size: 35px;
-    margin-bottom: 2rem;
+    font-size: 18px;
+    margin-bottom: 1.5rem;
 }
-
-.booking-link {
-    display: inline-block;
-    cursor: pointer;
-    transition: transform 0.4s ease;
-    border-bottom: 2px solid currentColor;
-    padding-bottom: 4px;
-  }
-  
-  .booking-link:hover {
-    transform: translateX(5px);
-    transition: transform 0.5s ease;
-  }
-
-  }
+}
 
   
