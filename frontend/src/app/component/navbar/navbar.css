@@ -1,58 +1,122 @@
 .navbarwrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  backdrop-filter: blur(16px);
+  background-color: #fff6;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.navbar {
+  padding: 1rem 2rem;
+}
+
+.navbarcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbarlogo img {
+  height: 40px;
+  width: auto;
+  transition: opacity 0.3s ease;
+}
+
+.navbarlogo img:hover {
+  opacity: 0.8;
+}
+
+.navright {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.navbarlinks {
+  display: flex;
+  gap: 5rem;
+}
+
+.navlink {
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  font-weight: 500;
+  color: #000;
+}
+
+.navbarcta {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger-mobile {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .navbarwrapper {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 900;
-    backdrop-filter: blur(16px);
-    background-color: #fff6;
+    background-color: #fff;
     width: 100%;
     margin: 0 auto;
-    }
-      
-  
+  }
+
   .navbar {
-    padding: 1rem 2rem;
+    padding: 0.4rem 1rem;
   }
-  
-  .navbarcontainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .navbarlogo img {
-    height: 40px;
-    width: auto;
-    transition: opacity 0.3s ease;
-  }
-  
-  .navbarlogo img:hover {
-    opacity: 0.8;
-  }
-  
-  .navright {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-  }
-  
-  .navbarlinks {
-    display: flex;
-    gap: 5rem;
-  }
-  
-  .navlink {
-    text-decoration: none;
-    padding: 0.5rem 0;
-    position: relative;
-    font-weight: 500;
-  }
-  
+
+  .navbarlinks,
   .navbarcta {
-    display: flex;
-    align-items: center;
+    display: none;
   }
-  
+
+  .hamburger-mobile {
+    display: block;
+  }
+
+  .mobilemenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px); /* Adjust if navbar height changes */
+    background-color: #fff; /* <-- white background for visibility */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    z-index: 1200;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .mobilelink {
+    font-size: 1.5rem;
+    color: #000; /* ensure contrast on white background */
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-10%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
