@@ -1,10 +1,18 @@
 .remove-button {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 0;
+    right: 0;
     border: none;
     font-size: 18px;
-    background-color: #fff;
+    padding: 20px;
+    background-color: transparent;
     color: #000;
     cursor: pointer;
+}
+
+@media (max-width: 760px) {
+    .remove-button {
+        padding: 15px;
+        font-size: 16px;
+    }
 }
