@@ -35,15 +35,6 @@
   opacity: 0; /* initial opacity */
 }
 
-/* Remove hover styles to avoid conflict */
-/* .imageSlot:hover .hoverImage {
-  opacity: 1;
-}
-
-.imageSlot:hover .defaultImage {
-  opacity: 0;
-} */
-
 /* Adjust container on mobile */
 @media (max-width: 760px) {
   .imagepage-container {

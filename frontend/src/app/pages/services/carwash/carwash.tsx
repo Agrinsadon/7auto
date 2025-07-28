@@ -48,21 +48,21 @@ const Carwash = () => {
                 <div className={`carwash-content ${activeTab === 'hinnat' ? 'visible' : 'hidden'}`}>
                 <div className="services-grid">
                 <div className="row">
-                    <div className="cell">PESUPALVELUT</div>
+                    <div className="cell"><strong>PESUPALVELUT</strong></div>
                     <div className="cell-underline"></div>
                     <div className="cell">Käsipesu - 10.00 €</div>
                     <div className="cell">Sisäpesu - 10.00 €</div>
                     <div className="cell">Käsi + sisäpesu - 10.00 €</div>
                 </div>
                 <div className="row">
-                    <div className="cell">VAHAUS & KIILTO</div>
+                    <div className="cell"><strong>VAHAUS & KIILTO</strong></div>
                     <div className="cell-underline"></div>
                     <div className="cell">Normaali vahaus - 10.00 €</div>
                     <div className="cell">Kova vahaus - 10.00 €</div>
                     <div className="cell">Keraaminen NANO vahaus - 10.00 €</div>
                 </div>
                 <div className="row">
-                    <div className="cell">RENGASPALVELUT</div>
+                    <div className="cell"><strong>RENGASPALVELUT</strong></div>
                     <div className="cell-underline"></div>
                     <div className="cell">Renkaiden vaihto (henkilöauto) - 10.00 €</div>
                     <div className="cell">Renkaiden vaihto (pakettiauto) - 10.00 €</div>

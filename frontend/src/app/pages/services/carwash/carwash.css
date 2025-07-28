@@ -96,5 +96,52 @@
     border-bottom: 1px solid #ccc;
   }
 
-@media (max-width: 768px) {
+@media (max-width: 760px) {
+
+    .carwash-service-container {
+        margin-top: 1.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .carwash-header {
+        margin-bottom: 0.5rem;
+    }
+    
+    .tab-menu {
+        display: flex;
+        gap: 2rem;
+        margin-top: 1.5rem;
+        cursor: pointer;
+    }
+
+    .carwash-content {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 1s ease-in-out;
+        width: 100%;
+    }
+    
+    .info-content {
+        display: block;
+    }
+    
+    .info-text {
+        flex: 1;
+        margin-top: 1rem;
+        line-height: 1.6;
+    }
+    
+    .info-image {
+        margin-top: 1rem;
+        width: 100%;
+    }
+    
+    .services-grid {
+        display: block;
+      }
 }
