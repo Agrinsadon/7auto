@@ -27,7 +27,7 @@ const Footer = () => {
             />
           </div>
         </div>
-
+        <p className='main-page-footer-text'>Yksi pysähdys, täysi huolenpito</p>
         {/* Social Media Icons */}
         <div className="main-page-footer-socials">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">

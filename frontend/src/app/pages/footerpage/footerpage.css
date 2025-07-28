@@ -5,6 +5,10 @@
     padding: 3rem 3rem 5rem 3rem;
     gap: 40rem;
   }
+
+  .main-page-footer-text{
+    padding-top: 1rem;
+  }
   
   .main-page-footer-right {
     margin-top: 1rem;
