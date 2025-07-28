@@ -36,7 +36,7 @@ const SimpleContactForm = () => {
       if (!res.ok) throw new Error('Failed to send');
 
       alert('Viesti lähetetty onnistuneesti!');
-      setForm({ name: '', email: '', message: '' }); // reset form
+      setForm({ name: '', email: '', message: '' });
     } catch (err) {
       alert('Viestin lähetys epäonnistui. Yritä myöhemmin uudelleen.');
     }

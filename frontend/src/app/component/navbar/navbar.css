@@ -23,8 +23,8 @@
 }
 
 .navbarlogo img {
-  height: 40px;
-  width: auto;
+  height: auto;
+  width: 100px;
   transition: opacity 0.3s ease;
 }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./component/navbar/navbar";
+import Footer from "./pages/footerpage/footerpage";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -21,11 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/isam.png" sizes="32x32" />
+        <link rel="icon" href="/logo.png" sizes="32x32" />
       </head>
       <body className={nunitoSans.variable}>
         <Navbar />
         <main className="pt-[80px]">{children}</main>
+        <Footer />
       </body>
     </html>
   );

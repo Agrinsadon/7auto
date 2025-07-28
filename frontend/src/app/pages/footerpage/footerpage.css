@@ -1,0 +1,137 @@
+.footer {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    padding: 3rem 3rem 5rem 3rem;
+    gap: 40rem;
+  }
+  
+  .footer-right {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8rem;
+  }
+  
+  .footer-left {
+    display: block;
+    justify-content: left;
+    align-items: left;
+  }
+
+  .footer-logo-img {
+    height: auto;
+    width: 150px;
+  }
+  
+  .footer-socials {
+    display: flex;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    color: #fff;
+  }
+  
+  .footer-socials a {
+    transition: opacity 0.3s ease;
+  }
+  
+  .footer-socials a:hover {
+    opacity: 0.7;
+  }
+  
+  .social-icon {
+    font-size: 1.5rem;
+  }
+  
+  .footer-copy {
+    font-size: 0.9rem;
+  }
+  
+  .footer-title {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-right p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #fff;
+  }
+  
+  .footer-info {
+    display: flex;
+    gap: 1rem;
+    color: #fff;
+    font-size: 0.95rem;
+    padding-top: 1rem;
+  }
+  
+  .footer-info a {
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-info a:hover {
+    color: #ccc;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-hours .footer-title {
+    margin-bottom: 1rem;
+  }
+  
+  .footer-hours p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  
+  @media (max-width: 760px) {
+    .footer {
+      display: block;
+    }
+    .footer-title {
+      margin-top: 2rem;
+    }
+      
+    .footer-right {
+      margin-top: 2rem;
+      display: block;
+    }
+  
+  }
+
+  @media (max-width: 1370px) {
+    .footer {
+      gap: 30rem;
+    }
+  }
+  
+
+  @media (max-width: 1180px) {
+    .footer {
+      gap: 20rem;
+    }
+  }
+
+  @media (max-width: 1050px) {
+    .footer {
+      gap: 10rem;
+    }
+  }
+  
+  @media (max-width: 888px) {
+    .footer {
+      gap: 5rem;
+    }
+    .footer-right {
+      gap: 5rem;
+    }
+  }
+  
+  
+  

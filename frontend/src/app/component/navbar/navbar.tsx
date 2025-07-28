@@ -1,6 +1,8 @@
-"use client";
+'use client';
+
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import BookButton from '../buttons/bookbutton';
 import BookingStart from '../reservation-side/bookframes/bookingstart';
 import Hamburger from '../buttons/hamburger'; // adjust the path
@@ -12,7 +14,6 @@ const Navbar = () => {
 
   const handleClick = () => setIsBookingOpen(true);
   const handleClose = () => setIsBookingOpen(false);
-
   const toggleMenu = () => setMenuOpen(prev => !prev);
 
   return (
@@ -22,7 +23,16 @@ const Navbar = () => {
           <div className='navbarcontainer'>
             <div className='navbarlogo'>
               <Link href="/">
-                <img src="/isam.png" alt="Company Logo" className='logoimg' />
+                <div className="logoimg-wrapper">
+                  <Image
+                    src="/logo.png"
+                    alt="Company Logo"
+                    width={120}
+                    height={40}
+                    className="logoimg"
+                    priority
+                  />
+                </div>
               </Link>
             </div>
 
@@ -42,7 +52,7 @@ const Navbar = () => {
               </div>
 
               <div className="hamburger-mobile">
-              <Hamburger isOpen={menuOpen} onClick={toggleMenu} />
+                <Hamburger isOpen={menuOpen} onClick={toggleMenu} />
               </div>
             </div>
           </div>

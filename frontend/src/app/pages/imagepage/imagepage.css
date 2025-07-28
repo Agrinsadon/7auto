@@ -17,7 +17,7 @@
 
 .image {
   object-fit: cover;
-  transition: opacity 0.5s ease; /* smooth opacity transition */
+  transition: opacity 0.5s ease;
   position: absolute;
   top: 0;
   left: 0;
@@ -27,33 +27,14 @@
 
 .defaultImage {
   z-index: 1;
-  opacity: 1; /* initial opacity */
+  opacity: 1;
 }
 
 .hoverImage {
   z-index: 2;
-  opacity: 0; /* initial opacity */
+  opacity: 0;
 }
 
-/* Adjust container on mobile */
-@media (max-width: 760px) {
-  .imagepage-container {
-    flex-direction: column;
-    height: auto;
-    padding: 5rem 1rem 5rem 1rem;
-
-  }
-
-  .imageSlot {
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-  }
-
-  /* Hide all except the active image handled in React */
-}
-
-/* Dots container */
 .dots-container {
   display: flex;
   justify-content: center;
@@ -72,4 +53,21 @@
 
 .dot.active {
   background-color: #fff;
+}
+
+
+@media (max-width: 760px) {
+  .imagepage-container {
+    flex-direction: column;
+    height: auto;
+    padding: 5rem 1rem 5rem 1rem;
+
+  }
+
+  .imageSlot {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
+
 }

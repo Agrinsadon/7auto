@@ -11,12 +11,11 @@ const images = [
   { default: '/isam.png', hover: '/isom.png' },
 ];
 
-const ImageGrid = () => {
+const ImagePage = () => {
   const [showHover, setShowHover] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detect screen size
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 760);
@@ -26,7 +25,6 @@ const ImageGrid = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Hover toggle for DESKTOP only
   useEffect(() => {
     if (isMobile) return;
 
@@ -37,18 +35,16 @@ const ImageGrid = () => {
     return () => clearInterval(toggleHover);
   }, [isMobile]);
 
-  // Sync image cycling + hover for MOBILE
   useEffect(() => {
     if (!isMobile) return;
 
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % images.length);
-      setShowHover(false); // Reset to default image
+      setShowHover(false);
 
-      // Optional: Show hover image halfway through
       setTimeout(() => {
         setShowHover(true);
-      }, 2500); // Half of 5 seconds
+      }, 2500);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -99,7 +95,6 @@ const ImageGrid = () => {
         ))
       )}
 
-      {/* Dots navigation for mobile */}
       {isMobile && (
         <div className='dots-container'>
           {images.map((_, i) => (
@@ -108,8 +103,8 @@ const ImageGrid = () => {
               className={`dot ${i === currentIndex ? 'active' : ''}`}
               onClick={() => {
                 setCurrentIndex(i);
-                setShowHover(false); // reset to default when manually selected
-                setTimeout(() => setShowHover(true), 2500); // restart hover
+                setShowHover(false);
+                setTimeout(() => setShowHover(true), 2500);
               }}
             />
           ))}
@@ -119,4 +114,4 @@ const ImageGrid = () => {
   );
 };
 
-export default ImageGrid;
+export default ImagePage;
