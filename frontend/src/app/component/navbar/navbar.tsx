@@ -1,11 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import BookButton from '../buttons/bookbutton';
 import BookingStart from '../reservation-side/bookframes/bookingstart';
-import Hamburger from '../buttons/hamburger'; // adjust the path
+import Hamburger from '../buttons/hamburger';
 import './navbar.css';
 
 const Navbar = () => {
@@ -16,13 +15,22 @@ const Navbar = () => {
   const handleClose = () => setIsBookingOpen(false);
   const toggleMenu = () => setMenuOpen(prev => !prev);
 
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setMenuOpen(false); // Close mobile menu if open
+    }
+  };
+
   return (
     <>
       <div className='navbarwrapper'>
         <nav className='navbar'>
           <div className='navbarcontainer'>
             <div className='navbarlogo'>
-              <Link href="/">
+              <a href="/">
                 <div className="logoimg-wrapper">
                   <Image
                     src="/logo.png"
@@ -33,14 +41,14 @@ const Navbar = () => {
                     priority
                   />
                 </div>
-              </Link>
+              </a>
             </div>
 
             <div className='navright'>
               <div className='navbarlinks'>
-                <Link href="/huolto" className='navlink'>Huolto</Link>
-                <Link href="/pesu" className='navlink'>Pesu</Link>
-                <Link href="/yhteystiedot" className='navlink'>Yhteystiedot</Link>
+                <a href="#huolto" className="navlink" onClick={(e) => handleAnchorClick(e, 'huolto')}>Huolto</a>
+                <a href="#pesu" className="navlink" onClick={(e) => handleAnchorClick(e, 'pesu')}>Pesu</a>
+                <a href="#yhteystiedot" className="navlink" onClick={(e) => handleAnchorClick(e, 'yhteystiedot')}>Yhteystiedot</a>
               </div>
 
               <div className='navbarcta'>
@@ -57,12 +65,11 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Overlay */}
           {menuOpen && (
             <div className="mobilemenu">
-              <Link href="/huolto" className='mobilelink' onClick={toggleMenu}>Huolto</Link>
-              <Link href="/pesu" className='mobilelink' onClick={toggleMenu}>Pesu</Link>
-              <Link href="/yhteystiedot" className='mobilelink' onClick={toggleMenu}>Yhteystiedot</Link>
+              <a href="#huolto" className="mobilelink" onClick={(e) => handleAnchorClick(e, 'huolto')}>Huolto</a>
+              <a href="#pesu" className="mobilelink" onClick={(e) => handleAnchorClick(e, 'pesu')}>Pesu</a>
+              <a href="#yhteystiedot" className="mobilelink" onClick={(e) => handleAnchorClick(e, 'yhteystiedot')}>Yhteystiedot</a>
               <BookButton
                 onClick={() => {
                   handleClick();

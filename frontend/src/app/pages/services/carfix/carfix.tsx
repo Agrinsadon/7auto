@@ -4,6 +4,7 @@ import Image from 'next/image';
 const Carfix = () => {
 
     return (
+        <section id="huolto">
         <div className="carfix-service-container">
         <div className="carfix-header">
             <h1>Auton huolto 7autossa</h1>
@@ -24,6 +25,7 @@ const Carfix = () => {
         <Image src="/carfix.png" alt="Auton huolto" className='info-image' width={400} height={300} />
         </div>
         </div>
+        </section>
 )
 }
 

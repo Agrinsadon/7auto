@@ -4,11 +4,11 @@
     color: white;
     padding-left: 4rem;
     padding-right: 4rem;
-    padding-bottom: 7rem;
+    padding-top: 9rem;
+    padding-bottom: 9rem;
 }
 
 .carfix-header {
-    padding-top: 7rem;
     margin-bottom: 1rem;
 }
 
@@ -20,13 +20,13 @@
 
 @media (max-width: 760px) {
     .carfix-service-container {
+        padding-top: 1.5rem;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         padding-bottom: 1.5rem;
     }
     
     .carfix-header {
-        padding-top: 2rem;
         margin-bottom: 0;
     }
 }

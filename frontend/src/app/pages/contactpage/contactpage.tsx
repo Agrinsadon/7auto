@@ -43,6 +43,7 @@ const SimpleContactForm = () => {
   };
 
   return (
+    <section id="yhteystiedot">
     <div className="contact-form-container">
       <div className="contact-form-header">
         <h2>Ota meihin yhteyttä</h2>
@@ -124,6 +125,7 @@ const SimpleContactForm = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

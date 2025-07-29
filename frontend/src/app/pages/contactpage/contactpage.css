@@ -1,12 +1,10 @@
 .contact-form-container {
-  margin-top: 7rem;
-  margin-bottom: 7rem;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 5rem;
   flex-wrap: wrap;
-  padding: 0 2rem;
+  padding: 9rem 2rem;
 }
 
 .contact-form-header {
@@ -66,11 +64,9 @@
 
 @media (max-width: 760px) {
   .contact-form-container {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
     display: block;
     flex-wrap: wrap;
-    padding: 0 1rem;
+    padding: 1.5rem 1rem;
   }
 
   .contact-form-description {

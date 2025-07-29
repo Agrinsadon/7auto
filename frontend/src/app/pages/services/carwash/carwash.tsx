@@ -6,6 +6,8 @@ const Carwash = () => {
     const [activeTab, setActiveTab] = useState('tiedot');
 
     return (
+        <section id="pesu">
+
         <div className="carwash-service-container">
             <div className="carwash-header">
                 <h1>Autonpesu 7autossa</h1>
@@ -73,6 +75,7 @@ const Carwash = () => {
                 </div>
             </div>
         </div>
+        </section>
     );
 };
 

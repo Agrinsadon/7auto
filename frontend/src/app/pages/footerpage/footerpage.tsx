@@ -38,11 +38,19 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* Copyright */}
         <p className="main-page-footer-copy">© 2025 Copyright 7auto Oy</p>
       </div>
 
       <div className="main-page-footer-right">
+      <div className="main-page-footer-booking">
+        <h4 className="main-page-footer-title">Varaa aika</h4>
+        <p>
+          <a href="/huolto" className="main-page-footer-link">Huolto</a>
+        </p>
+        <p>
+          <a href="/pesu" className="main-page-footer-link">Pesu</a>
+        </p>
+      </div>
       <div className="main-page-footer-hours">
           <h4 className="main-page-footer-title">Aukioloajat</h4>
           <p>Ma - Pe | 08:00 - 18:00</p>

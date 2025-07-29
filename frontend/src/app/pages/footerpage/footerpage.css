@@ -3,7 +3,7 @@
     color: #fff;
     display: flex;
     padding: 3rem 3rem 5rem 3rem;
-    gap: 40rem;
+    gap: 25rem;
   }
 
   .main-page-footer-text{
@@ -92,9 +92,28 @@
     margin-bottom: 1rem;
     font-size: 0.95rem;
   }
+
+  .main-page-footer-booking {
+    color: #fff;
+  }
   
+  .main-page-footer-booking p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
   
-  @media (max-width: 760px) {
+  .main-page-footer-link {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .main-page-footer-link:hover {
+    color: #ccc;
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 910px) {
     .main-page-footer {
       display: block;
       padding-left: 2rem;
@@ -110,31 +129,30 @@
   
   }
 
-  @media (max-width: 1370px) {
-    .main-page-footer {
-      gap: 30rem;
-    }
-  }
-  
-
-  @media (max-width: 1180px) {
-    .main-page-footer {
-      gap: 20rem;
-    }
-  }
-
-  @media (max-width: 1050px) {
+  @media (max-width: 1395px) {
     .main-page-footer {
       gap: 10rem;
     }
   }
   
-  @media (max-width: 888px) {
+
+  @media (max-width: 1157px) {
     .main-page-footer {
       gap: 5rem;
     }
+
     .main-page-footer-right {
       gap: 5rem;
+    }
+  }
+
+  @media (max-width: 1056px) {
+    .main-page-footer {
+      gap: 5rem;
+    }
+
+    .main-page-footer-right {
+      gap: 3rem;
     }
   }
   
