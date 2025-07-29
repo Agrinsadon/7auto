@@ -5,10 +5,10 @@ import { useState, useEffect } from 'react';
 import './imagepage.css';
 
 const images = [
-  { default: '/isam.png', hover: '/isom.png' },
-  { default: '/isam.png', hover: '/isom.png' },
-  { default: '/isam.png', hover: '/isom.png' },
-  { default: '/isam.png', hover: '/isom.png' },
+  { default: '/carfix.png', hover: '/carwash.png' },
+  { default: '/carfix.png', hover: '/carwash.png' },
+  { default: '/carfix.png', hover: '/carwash.png' },
+  { default: '/carfix.png', hover: '/carwash.png' },
 ];
 
 const ImagePage = () => {

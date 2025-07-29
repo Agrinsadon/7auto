@@ -5,6 +5,7 @@ import Image from 'next/image';
 import BookButton from '../buttons/bookbutton';
 import BookingStart from '../reservation-side/bookframes/bookingstart';
 import Hamburger from '../buttons/hamburger';
+import { MapPin, Mail, Phone } from 'lucide-react';
 import './navbar.css';
 
 const Navbar = () => {
@@ -20,7 +21,7 @@ const Navbar = () => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
-      setMenuOpen(false); // Close mobile menu if open
+      setMenuOpen(false);
     }
   };
 
@@ -30,26 +31,25 @@ const Navbar = () => {
         <nav className='navbar'>
           <div className='navbarcontainer'>
             <div className='navbarlogo'>
-            <a
-              href="#top"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                setMenuOpen(false);
-              }}
-            >
-              <div className="logoimg-wrapper">
-                <Image
-                  src="/logo.png"
-                  alt="Company Logo"
-                  width={120}
-                  height={40}
-                  className="logoimg"
-                  priority
-                />
-              </div>
-            </a>
-
+              <a
+                href="#top"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  setMenuOpen(false);
+                }}
+              >
+                <div className="logoimg-wrapper">
+                  <Image
+                    src="/logo.png"
+                    alt="Company Logo"
+                    width={120}
+                    height={40}
+                    className="logoimg"
+                    priority
+                  />
+                </div>
+              </a>
             </div>
 
             <div className='navright'>
@@ -75,17 +75,42 @@ const Navbar = () => {
 
           {menuOpen && (
             <div className="mobilemenu">
-              <a href="#huolto" className="mobilelink" onClick={(e) => handleAnchorClick(e, 'huolto')}>Huolto</a>
-              <a href="#pesu" className="mobilelink" onClick={(e) => handleAnchorClick(e, 'pesu')}>Pesu</a>
-              <a href="#yhteystiedot" className="mobilelink" onClick={(e) => handleAnchorClick(e, 'yhteystiedot')}>Yhteystiedot</a>
-              <BookButton
-                onClick={() => {
-                  handleClick();
-                  toggleMenu();
-                }}
-                onText="Varaa aika"
-                variant="dark"
-              />
+              <div className="mobilemenu-top">
+                <a href="#huolto" className="mobilelink" onClick={(e) => handleAnchorClick(e, 'huolto')}>Huolto</a>
+                <a href="#pesu" className="mobilelink" onClick={(e) => handleAnchorClick(e, 'pesu')}>Pesu</a>
+                <a href="#yhteystiedot" className="mobilelink" onClick={(e) => handleAnchorClick(e, 'yhteystiedot')}>Yhteystiedot</a>
+
+                <BookButton
+                  onClick={() => {
+                    handleClick();
+                    toggleMenu();
+                  }}
+                  onText="Varaa aika"
+                  variant="light"
+                  size='small'
+                />
+              </div>
+
+              <div className="mobilemenu-bottom">
+                <a
+                  href="https://maps.google.com/?q=Autokatu+7,+00100+Helsinki"
+                  className="contactlink"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin className="contacticon" />
+                  Autokatu 7, Helsinki
+                </a>
+                <a href="mailto:info@7auto.fi" className="contactlink">
+                  <Mail className="contacticon" />
+                  info@7auto.fi
+                </a>
+                <a href="tel:+358408282632" className="contactlink">
+                  <Phone className="contacticon" />
+                  +358 40 828 2632
+                </a>
+              </div>
+
             </div>
           )}
         </nav>
