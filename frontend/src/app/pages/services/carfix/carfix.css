@@ -2,10 +2,7 @@
     display: block;
     background-color: black;
     color: white;
-    padding-left: 4rem;
-    padding-right: 4rem;
-    padding-top: 9rem;
-    padding-bottom: 9rem;
+    padding: 8rem 4rem;
 }
 
 .carfix-header {

@@ -35,10 +35,10 @@ const Carwash = () => {
                                 Autonpesu 7autossa tarjoamme kattavan valikoiman autonhoitopalveluita, jotka on suunniteltu helpottamaan arkeasi ja pidentämään ajoneuvosi käyttöikää. Olipa kyseessä ulkoinen puhdistus, sisätilojen siivous tai vaativampi pintojen suojaus, voit luottaa siihen, että työ tehdään huolellisesti ja ammattitaidolla.
                             </p>
                             <br />
-                            <p>
+                            <p className='info-text-desktop'>
                                 Meille tärkeintä on asiakkaan tyytyväisyys, ja siksi käytämme laadukkaita aineita sekä nykyaikaisia menetelmiä jokaisessa työvaiheessa. Palvelumme sopivat niin päivittäiseen ylläpitoon kuin perusteellisempaan auton kunnostukseen. Myös rengastyöt hoituvat meillä helposti ja nopeasti saman katon alla.
                             </p>
-                            <br />
+                            <br className='info-text-desktop'/>
                             <p>
                                 Tavoitteenamme on tarjota asiakkaillemme vaivaton ja miellyttävä asiointikokemus olitpa sitten ensimmäistä kertaa liikkeellä tai pitkäaikainen asiakkaamme. Tervetuloa huolettomaan autonhoitoon!
                             </p>

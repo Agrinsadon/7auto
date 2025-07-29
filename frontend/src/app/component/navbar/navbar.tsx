@@ -30,18 +30,26 @@ const Navbar = () => {
         <nav className='navbar'>
           <div className='navbarcontainer'>
             <div className='navbarlogo'>
-              <a href="/">
-                <div className="logoimg-wrapper">
-                  <Image
-                    src="/logo.png"
-                    alt="Company Logo"
-                    width={120}
-                    height={40}
-                    className="logoimg"
-                    priority
-                  />
-                </div>
-              </a>
+            <a
+              href="#top"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setMenuOpen(false);
+              }}
+            >
+              <div className="logoimg-wrapper">
+                <Image
+                  src="/logo.png"
+                  alt="Company Logo"
+                  width={120}
+                  height={40}
+                  className="logoimg"
+                  priority
+                />
+              </div>
+            </a>
+
             </div>
 
             <div className='navright'>
