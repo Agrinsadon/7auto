@@ -45,14 +45,24 @@ const Calendar = ({
         data.forEach(event => {
           if (event.type !== bookingType) return;
 
+          // Parse the date as Helsinki time
           const dateTime = new Date(event.start);
-          // Convert to local timezone for display
-          const localDate = new Date(dateTime.getTime() + dateTime.getTimezoneOffset() * 60000);
-          const dateKey = localDate.toISOString().split('T')[0];
-          const time = localDate.toTimeString().slice(0, 5); // HH:mm
+          
+          // Get date in local timezone (YYYY-MM-DD)
+          const dateKey = new Date(
+            dateTime.getFullYear(),
+            dateTime.getMonth(),
+            dateTime.getDate()
+          ).toISOString().split('T')[0];
+          
+          // Get time in Helsinki timezone (HH:mm)
+          const helsinkiTime = new Date(dateTime.getTime() - dateTime.getTimezoneOffset() * 60000)
+            .toISOString()
+            .split('T')[1]
+            .substring(0, 5);
 
           if (!slotsByDate[dateKey]) slotsByDate[dateKey] = [];
-          slotsByDate[dateKey].push(time);
+          slotsByDate[dateKey].push(helsinkiTime);
         });
 
         setBookedSlots(slotsByDate);
@@ -123,13 +133,32 @@ const Calendar = ({
 
   const isTimeDisabled = (time: string): boolean => {
     if (!selectedDate) return false;
-    // Use local date string for comparison
+    
+    // Create date string in local timezone (YYYY-MM-DD)
     const dateKey = new Date(
       selectedDate.getFullYear(),
       selectedDate.getMonth(),
       selectedDate.getDate()
     ).toISOString().split('T')[0];
-    return bookedSlots[dateKey]?.includes(time) ?? false;
+    
+    // Convert the time we're checking to Helsinki timezone for comparison
+    const [hours, minutes] = time.split(':').map(Number);
+    const localDateTime = new Date(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      selectedDate.getDate(),
+      hours,
+      minutes
+    );
+    
+    // Convert to Helsinki timezone string (HH:mm)
+    const helsinkiTime = new Date(localDateTime.getTime() - localDateTime.getTimezoneOffset() * 60000)
+      .toISOString()
+      .split('T')[1]
+      .substring(0, 5);
+    
+    // Check against booked slots (which are already in Helsinki time)
+    return bookedSlots[dateKey]?.includes(helsinkiTime) ?? false;
   };
 
   return (
