@@ -11,12 +11,12 @@ const category = [
   {
     name: "VAHAUS & KIILTO",
     amount: "3 palvelua",
-    img: "/carwash.png",
+    img: "/vahaus.png",
   },
   {
     name: "RENGASPALVELUT",
     amount: "4 palvelua",
-    img: "/carwash.png",
+    img: "/rengas.png",
   },
 ];
 

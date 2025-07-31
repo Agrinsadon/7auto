@@ -75,7 +75,6 @@ const BookingReceipt = ({ selectedServices, selectedDate, selectedTime }: Props)
 
       <br />
 
-      {/* Date + Time */}
       <div
         className="receipt-datetime"
         style={{

@@ -101,9 +101,9 @@ const Navbar = () => {
                   <MapPin className="contacticon" />
                   Autokatu 7, Helsinki
                 </a>
-                <a href="mailto:info@7auto.fi" className="contactlink">
+                <a href="mailto:7auto.tuki@gmail.com" className="contactlink">
                   <Mail className="contacticon" />
-                  info@7auto.fi
+                  7auto.tuki@gmail.com
                 </a>
                 <a href="tel:+358408282632" className="contactlink">
                   <Phone className="contacticon" />

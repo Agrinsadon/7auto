@@ -13,15 +13,12 @@ const Carfix = () => {
             <p>
               7autossa tarjoamme monipuoliset ja luotettavat autohuoltopalvelut, jotka on suunniteltu varmistamaan ajoneuvosi turvallisuus, suorituskyky ja pitkä käyttöikä. Olipa kyseessä määräaikaishuolto, öljynvaihto, jarrujen tarkastus tai jokin muu tekninen toimenpide, voit luottaa siihen, että autosi on osaavissa käsissä.
             </p>
-
+            <br className='info-text-desktop'/>
             <p className='info-text-desktop'>
               Panostamme työn laatuun ja asiakastyytyväisyyteen käyttämällä vain laadukkaita varaosia ja nykyaikaisia huoltomenetelmiä. Meiltä saat apua niin arkisiin huoltotarpeisiin kuin yllättäviin korjaustilanteisiin nopeasti, joustavasti ja kilpailukykyiseen hintaan.
-            </p>
-
-            <p>
               Huollon yhteydessä voimme tarkistaa myös renkaat, valot, nesteet ja muut tärkeät ajoneuvon osa-alueet, jotta voit ajaa huoletta kaikkina vuodenaikoina. Tarjoamme kokonaisvaltaista palvelua saman katon alla.
             </p>
-
+            <br />
             <p>
               Tavoitteenamme on tehdä autohuollosta mahdollisimman sujuvaa ja vaivatonta sinulle, joka arvostat luotettavuutta ja hyvää palvelua.
             </p>

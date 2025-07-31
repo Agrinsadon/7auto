@@ -103,10 +103,15 @@
   }
   
   .main-page-footer-link {
-    color: #fff;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
     text-decoration: none;
-    transition: color 0.3s ease;
+    padding: 0;
   }
+  
   
   .main-page-footer-link:hover {
     color: #ccc;
