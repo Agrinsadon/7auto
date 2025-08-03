@@ -73,7 +73,7 @@ const SimpleContactForm = () => {
           </div>
           <div className="contact-info-item">
             <Mail size={20} />
-            <a href="mailto:info@esimerkki.fi">info@esimerkki.fi</a>
+            <a href="mailto:info@esimerkki.fi">7auto.tuki@gmail.com</a>
           </div>
         </div>
       </div>
